@@ -6,12 +6,10 @@
 
     <ScrollView>
         <VerticalStackLayout
+            x:Name="TermLayout"
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Start">
-            <Components:TermComponent />
-            <Components:TermComponent />
-            <Components:TermComponent />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

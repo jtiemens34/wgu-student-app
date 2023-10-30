@@ -20,5 +20,9 @@ namespace MobileDev
         public DateTime StartDate { get; set; }
         [Column("end_date")]
         public DateTime EndDate { get; set; }
+
+        public Term()
+        {
+        }
     }
 }

@@ -18,6 +18,7 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+		builder.Services.AddSingleton<DatabaseHandler>(s => ActivatorUtilities.CreateInstance<DatabaseHandler>(s));
 
 		return builder.Build();
 	}

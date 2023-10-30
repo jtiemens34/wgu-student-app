@@ -2,12 +2,10 @@ namespace MobileDev.Components;
 
 public partial class TermComponent : ContentView
 {
-	public TermComponent()
+	private Term Term;
+	public TermComponent(Term term)
 	{
 		InitializeComponent();
-	}
-	public async void EditClicked(object sender, ClickedEventArgs e)
-	{
-		
+		Term = term;
 	}
 }

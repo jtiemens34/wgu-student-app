@@ -2,10 +2,13 @@
 
 public partial class App : Application
 {
-	public App()
+	public static DatabaseHandler DbHandler { get; private set; }
+	public App(DatabaseHandler handler)
 	{
 		InitializeComponent();
 
 		MainPage = new AppShell();
+
+		DbHandler = handler;
 	}
 }
