@@ -48,12 +48,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Images\AssessmentsIcon.svg" />
-	  <None Remove="Resources\Images\CoursesIcon.svg" />
+	  <None Remove="Resources\Images\assessmentsicon.svg" />
+	  <None Remove="Resources\Images\coursesicon.svg" />
 	  <None Remove="Resources\Images\datepickicon.svg" />
 	  <None Remove="Resources\Images\deleteicon.svg" />
 	  <None Remove="Resources\Images\editicon.svg" />
-	  <None Remove="Resources\Images\TermsIcon.svg" />
+	  <None Remove="Resources\Images\termsicon.svg" />
 	</ItemGroup>
 
 	<ItemGroup>

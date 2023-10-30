@@ -2,18 +2,17 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileDev.TermPage">
-
     <ScrollView>
         <VerticalStackLayout
             x:Name="TermLayout"
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Start">
-            <Button Text="Add Software Course"
+            <Button Text="Add Term 1"
                     Clicked="OnNewButtonClicked" />
             <Button Text="Get Terms"
                     Clicked="OnGetButtonClicked" />
-            <CollectionView x:Name="termList">
+            <CollectionView x:Name="termList" >
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid ColumnSpacing="5">

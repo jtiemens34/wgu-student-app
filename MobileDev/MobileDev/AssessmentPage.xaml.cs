@@ -1,6 +1,6 @@
 namespace MobileDev;
 
-public partial class AssessmentPage : ContentView
+public partial class AssessmentPage : ContentPage
 {
 	public AssessmentPage()
 	{
