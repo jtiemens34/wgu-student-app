@@ -9,7 +9,7 @@ public partial class TermPage : ContentPage
     }
 	public async void OnNewButtonClicked(object sender, EventArgs e)
 	{
-		await App.DbHandler.AddNewTerm("Term 1");
+		await App.DbHandler.AddNewTermAsync("Term 1");
 	}
 	public async void OnGetButtonClicked(object sender, EventArgs e)
 	{
