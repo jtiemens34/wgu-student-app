@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileDev.Components.TermComponent">
+    <ContentView.Content>
+        <AbsoluteLayout>
+            <Label Text="Term 1" x:Name="termName" FontAttributes="Bold"
+                   AbsoluteLayout.LayoutBounds="13, 15, 51, 19"/>
+            <ImageButton Source="editicon.svg" 
+                         AbsoluteLayout.LayoutBounds="74, 17, 15, 15"/>
+            <ImageButton Source="deleteicon.svg" 
+                         AbsoluteLayout.LayoutBounds="99, 15, 15, 15"/>
+            <Label Text="02/01/21" x:Name="startDate" 
+                   AbsoluteLayout.LayoutBounds="232, 7, 68, 18"/>
+            <Label Text="09/01/21" x:Name="endDate" 
+                   AbsoluteLayout.LayoutBounds="232, 25, 68, 18"/>
+            <ImageButton Source="datepickicon.svg" 
+                         AbsoluteLayout.LayoutBounds="305, 10, 30, 30"/>
+        </AbsoluteLayout>
+    </ContentView.Content>
+</ContentView>
