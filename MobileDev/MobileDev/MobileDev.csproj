@@ -39,7 +39,6 @@
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -49,9 +48,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\AssessmentsIcon.svg" />
+	  <None Remove="Resources\Images\CoursesIcon.svg" />
 	  <None Remove="Resources\Images\datepickicon.svg" />
 	  <None Remove="Resources\Images\deleteicon.svg" />
 	  <None Remove="Resources\Images\editicon.svg" />
+	  <None Remove="Resources\Images\TermsIcon.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
