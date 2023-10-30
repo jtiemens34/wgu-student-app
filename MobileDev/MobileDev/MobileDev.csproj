@@ -60,9 +60,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Components\TermComponent.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Navigation.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

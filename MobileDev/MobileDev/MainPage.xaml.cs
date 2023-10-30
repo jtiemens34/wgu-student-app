@@ -1,20 +1,19 @@
-﻿using MobileDev.Components;
-
-namespace MobileDev;
+﻿namespace MobileDev;
 
 public partial class MainPage : ContentPage
 {
-	DatabaseHandler database;
 	public MainPage()
 	{
 		InitializeComponent();
-		//database = db;
     }
-	private void AddComponent()
+	public async void OnNewButtonClicked(object sender, EventArgs e)
 	{
-		Term term = new();
-		TermComponent component = new(term);
-		TermLayout.Add(component);
+		await App.DbHandler.AddNewTerm("Term 1");
+	}
+	public async void OnGetButtonClicked(object sender, EventArgs e)
+	{
+		List<Term> terms = await App.DbHandler.GetAllTerms();
+		termList.ItemsSource = terms;
 	}
 }
 
