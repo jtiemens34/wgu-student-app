@@ -1,10 +1,11 @@
 ﻿namespace MobileDev;
 
-public partial class MainPage : ContentPage
+public partial class TermPage : ContentPage
 {
-	public MainPage()
+	public TermPage()
 	{
 		InitializeComponent();
+		LoadAllTerms();
     }
 	public async void OnNewButtonClicked(object sender, EventArgs e)
 	{
@@ -12,8 +13,11 @@ public partial class MainPage : ContentPage
 	}
 	public async void OnGetButtonClicked(object sender, EventArgs e)
 	{
-		List<Term> terms = await App.DbHandler.GetAllTerms();
-		termList.ItemsSource = terms;
+		await LoadAllTerms();
+	}
+	private async Task LoadAllTerms()
+	{
+		termList.ItemsSource = await App.DbHandler.GetAllTermsAsync();
 	}
 }
 

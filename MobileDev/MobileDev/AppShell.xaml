@@ -7,13 +7,13 @@
     Shell.FlyoutBehavior="Disabled">
     <TabBar>
         <Tab Title="Terms">
-            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+            <ShellContent ContentTemplate="{DataTemplate local:TermPage}" />
         </Tab>
         <Tab Title="Courses">
-            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+            <ShellContent ContentTemplate="{DataTemplate local:CoursePage}" />
         </Tab>
         <Tab Title="Assessments">
-            <!--<ShellContent ContentTemplate="{DataTemplate views:MainPage}" />-->
+            <ShellContent ContentTemplate="{DataTemplate local:AssessmentPage}" />
         </Tab>
     </TabBar>
 </Shell>

@@ -10,6 +10,8 @@ namespace MobileDev
     public class DatabaseHandler
     {
         private SQLiteAsyncConnection _db;
+
+        public string StatusMessage { get; set; }
         public DatabaseHandler()
         {
         }
@@ -43,10 +45,10 @@ namespace MobileDev
             } 
             catch (Exception ex)
             {
-                // TODO: Handle exceptions
+                StatusMessage = ex.Message;
             }
         }
-        public async Task<List<Term>> GetAllTerms()
+        public async Task<List<Term>> GetAllTermsAsync()
         {
             try
             {
@@ -55,7 +57,7 @@ namespace MobileDev
             }
             catch (Exception ex)
             {
-                // TODO: Handle exceptions
+                StatusMessage = ex.Message;
             }
             return new List<Term>();
         }
