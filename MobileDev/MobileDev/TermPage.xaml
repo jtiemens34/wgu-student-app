@@ -13,40 +13,6 @@
                     Clicked="OnNewButtonClicked" />
             <Button Text="Get Terms"
                     Clicked="OnGetButtonClicked" />
-            <CollectionView x:Name="termList" >
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid ColumnSpacing="5">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="15" />
-                                <ColumnDefinition Width="15"  />
-                                <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="30" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <Label Grid.Column="0" Grid.RowSpan="2" VerticalOptions="Center"
-                                   Text="{Binding Name}" />
-                            <ImageButton Grid.Column="1" Grid.RowSpan="2" VerticalOptions="Center"
-                                         HorizontalOptions="Start"
-                                         Source="editicon.svg" />
-                            <ImageButton Grid.Column="2" Grid.RowSpan="2" VerticalOptions="Center"
-                                         HorizontalOptions="Start" HeightRequest="15"
-                                         Source="deleteicon.svg" />
-                            <Label Grid.Column="4" Grid.Row="0" VerticalOptions="Start"
-                                   Text="{Binding StartDate}" />
-                            <Label Grid.Column="4" Grid.Row="1" VerticalOptions="Start"
-                                   Text="{Binding EndDate}" />
-                            <ImageButton Grid.Column="5" Grid.RowSpan="2" VerticalOptions="Center"
-                                         Source="datepickicon.svg" />
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

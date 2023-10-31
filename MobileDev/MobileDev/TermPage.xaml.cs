@@ -1,4 +1,6 @@
-﻿namespace MobileDev;
+﻿using MobileDev.Components;
+
+namespace MobileDev;
 
 public partial class TermPage : ContentPage
 {
@@ -20,7 +22,9 @@ public partial class TermPage : ContentPage
 	}
 	private async Task LoadAllTerms()
 	{
-		termList.ItemsSource = await App.DbHandler.GetAllTermsAsync();
+		List<Term> terms = await App.DbHandler.GetAllTermsAsync();
+		TermView termView = new(terms);
+		TermLayout.Add(termView);
 	}
 }
 

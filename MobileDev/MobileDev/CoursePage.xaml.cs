@@ -23,6 +23,13 @@ public partial class CoursePage : ContentPage
 	private async Task LoadAllTerms()
 	{
 		termList.ItemsSource = await App.DbHandler.GetAllTermsAsync();
-		
+	}
+	private async Task LoadAllCourses(Term term)
+	{
+		List<Course> courses = await App.DbHandler.GetAllCoursesFromTermAsync(term);
+		foreach (Course course in courses)
+		{
+			
+		}
 	}
 }

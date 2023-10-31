@@ -100,18 +100,20 @@ namespace MobileDev
                 StatusMessage = ex.Message;
             }
         }
-        public async Task<List<Course>> GetAllCoursesAsync() 
+        public async Task<List<Course>> GetAllCoursesFromTermAsync(Term term)
         {
+            List<Course> courses = new();
+            int termId = term.Id;
             try
             {
                 await Init();
-                return await _db.Table<Course>().ToListAsync();
+                courses = await _db.Table<Course>().Where(o => o.TermId == termId).ToListAsync();
             }
             catch (Exception ex)
             {
                 StatusMessage = ex.Message;
             }
-            return new List<Course>();
+            return courses;
         }
         public async Task<int> SaveCourseAsync(Course course) 
         {

@@ -34,9 +34,6 @@
                                 Text="{Binding StartDate}" />
                             <Label Grid.Column="3" Grid.Row="1" VerticalOptions="Start"
                                 Text="{Binding EndDate}" />
-                            <Grid x:Name="courseList" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2">
-                                
-                            </Grid>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
