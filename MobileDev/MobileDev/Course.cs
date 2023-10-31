@@ -28,5 +28,7 @@ namespace MobileDev
         public string Name { get; set; }
         [Column("course_status")]
         public CourseStatus CourseStatus { get; set; }
+        [Column("credits")]
+        public int Credits { get; set; }
     }
 }

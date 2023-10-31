@@ -23,7 +23,7 @@ public partial class TermPage : ContentPage
 	private async Task LoadAllTerms()
 	{
 		List<Term> terms = await App.DbHandler.GetAllTermsAsync();
-		TermView termView = new(terms);
+		TermView termView = new(terms, false);
 		TermLayout.Add(termView);
 	}
 }

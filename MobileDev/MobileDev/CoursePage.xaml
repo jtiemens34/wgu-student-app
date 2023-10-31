@@ -5,39 +5,12 @@
              Loaded="OnLoad">
     <ScrollView>
         <VerticalStackLayout
-            x:Name="TermLayout"
+            x:Name="CourseLayout"
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Start">
             <Button Text="Add Software Course" />
             <Button Text="Get Courses" />
-            <CollectionView x:Name="termList">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid ColumnSpacing="5">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <ImageButton Grid.Column="0" Grid.RowSpan="2" 
-                                         Source="downarrow.svg" />
-                            <Label Grid.Column="1" Grid.RowSpan="2" VerticalOptions="Center"
-                                Text="{Binding Name}" />
-                            <Label Grid.Column="3" Grid.Row="0" VerticalOptions="Start"
-                                Text="{Binding StartDate}" />
-                            <Label Grid.Column="3" Grid.Row="1" VerticalOptions="Start"
-                                Text="{Binding EndDate}" />
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

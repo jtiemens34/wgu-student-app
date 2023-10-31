@@ -4,9 +4,9 @@ namespace MobileDev.Components;
 
 public class TermView : CollectionView
 {
-	public TermView(List<Term> terms)
+	public TermView(List<Term> terms, bool displayCourses)
 	{
-		this.ItemTemplate = new DataTemplate(() =>
+		this.ItemTemplate = new(() =>
 		{
             Grid gridView = new()
             {

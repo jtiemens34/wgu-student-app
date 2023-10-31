@@ -88,11 +88,14 @@ namespace MobileDev
                 await Init();
                 if (string.IsNullOrEmpty(name)) throw new Exception("Valid name required!");
 
-                Course course = new();
-                course.Id = 1;
-                course.Name = name;
-                course.CourseStatus = CourseStatus.InProgress;
-                course.TermId = 1;
+                Course course = new()
+                {
+                    Id = 1,
+                    Name = name,
+                    CourseStatus = CourseStatus.InProgress,
+                    TermId = 1,
+                    Credits = 3
+                };
                 await _db.InsertAsync(course);
             }
             catch (Exception ex)
@@ -114,6 +117,19 @@ namespace MobileDev
                 StatusMessage = ex.Message;
             }
             return courses;
+        }
+        public async Task<List<Course>> GetAllCoursesAsync()
+        {
+            try
+            {
+                await Init();
+                return await _db.Table<Course>().ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = ex.Message;
+            }
+            return new List<Course>();
         }
         public async Task<int> SaveCourseAsync(Course course) 
         {

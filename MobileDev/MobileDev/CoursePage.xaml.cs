@@ -1,3 +1,5 @@
+using MobileDev.Components;
+
 namespace MobileDev;
 
 public partial class CoursePage : ContentPage
@@ -13,17 +15,19 @@ public partial class CoursePage : ContentPage
     }
 	public async void OnLoad(object sender, EventArgs e)
 	{
-		await LoadAllTerms();
+		await LoadAllCourses();
 	}
 	public async void OnGetButtonClicked(object sender, EventArgs e)
 	{
-		await LoadAllTerms();
+		await LoadAllCourses();
 	}
 
-	private async Task LoadAllTerms()
+	private async Task LoadAllCourses()
 	{
-		termList.ItemsSource = await App.DbHandler.GetAllTermsAsync();
-	}
+        List<Course> courses = await App.DbHandler.GetAllCoursesAsync();
+        CourseView courseView = new(courses);
+        CourseLayout.Add(courseView);
+    }
 	private async Task LoadAllCourses(Term term)
 	{
 		List<Course> courses = await App.DbHandler.GetAllCoursesFromTermAsync(term);
