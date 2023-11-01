@@ -6,13 +6,13 @@
     xmlns:local="clr-namespace:MobileDev"
     Shell.FlyoutBehavior="Disabled">
     <TabBar>
-        <Tab Title="Terms" Icon="termsicon.svg">
+        <Tab Title="Terms" Icon="termsicon.png">
             <ShellContent ContentTemplate="{DataTemplate local:TermPage}" />
         </Tab>
-        <Tab Title="Courses" Icon="coursesicon.svg">
+        <Tab Title="Courses" Icon="coursesicon.png">
             <ShellContent ContentTemplate="{DataTemplate local:CoursePage}" />
         </Tab>
-        <Tab Title="Assessments" Icon="assessmentsicon.svg">
+        <Tab Title="Assessments" Icon="assessmentsicon.png">
             <ShellContent ContentTemplate="{DataTemplate local:AssessmentPage}" />
         </Tab>
     </TabBar>

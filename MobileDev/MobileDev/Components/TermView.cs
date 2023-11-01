@@ -35,7 +35,7 @@ public class TermView : CollectionView
             {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Start,
-                Source = "editicon.svg"
+                Source = "editicon.png"
             };
             gridView.Add(editButton, 1, 0);
             gridView.SetRowSpan(editButton, 2);
@@ -44,7 +44,7 @@ public class TermView : CollectionView
             {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Start,
-                Source = "deleteicon.svg"
+                Source = "deleteicon.png"
             };
             gridView.Add(deleteButton, 2, 0);
             gridView.SetRowSpan(deleteButton, 2);
@@ -61,7 +61,7 @@ public class TermView : CollectionView
             ImageButton datePickButton = new()
             {
                 VerticalOptions = LayoutOptions.Center,
-                Source = "datepickicon.svg"
+                Source = "datepickicon.png"
             };
             gridView.Add(datePickButton, 5, 0);
             gridView.SetRowSpan(datePickButton, 2);
