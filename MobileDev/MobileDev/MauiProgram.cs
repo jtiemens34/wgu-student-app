@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using SQLitePCL;
 
 namespace MobileDev;
 
@@ -19,7 +20,6 @@ public static class MauiProgram
 		builder.Logging.AddDebug();
 #endif
 		builder.Services.AddSingleton<DatabaseHandler>(s => ActivatorUtilities.CreateInstance<DatabaseHandler>(s));
-
 		return builder.Build();
 	}
 }

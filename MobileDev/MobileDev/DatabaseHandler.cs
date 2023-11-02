@@ -20,13 +20,25 @@ namespace MobileDev
             // DB has already been initialized, return.
             if (_db != null) return;
 
-            string DbFileName = "db.db3";
+            string DbFileName = "db.db";
             SQLiteOpenFlags Flags = SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create | SQLiteOpenFlags.SharedCache;
-            string DbPath = Path.Combine(FileSystem.AppDataDirectory, DbFileName);
+            string DbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), DbFileName);
+#if WINDOWS || IOS
+            DbPath = Path.Combine(FileSystem.AppDataDirectory, DbFileName);
+#endif
             _db = new SQLiteAsyncConnection(DbPath, Flags);
-            await _db.CreateTableAsync<Course>();
-            await _db.CreateTableAsync<Term>();
-            await _db.CreateTableAsync<Assessment>();
+            PermissionStatus readStatus = await Permissions.RequestAsync<Permissions.StorageRead>();
+            PermissionStatus writeStatus = await Permissions.RequestAsync<Permissions.StorageWrite>();
+            try
+            {
+                await _db.CreateTableAsync<Course>();
+                await _db.CreateTableAsync<Term>();
+                await _db.CreateTableAsync<Assessment>();
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = ex.Message;
+            }
         }
 
         #region Terms

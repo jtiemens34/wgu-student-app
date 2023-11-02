@@ -14,17 +14,8 @@ public partial class TermPage : ContentPage
 	}
 	public async void OnLoad(object sender, EventArgs e)
 	{
-		await LoadAllTerms();
-	}
-	public async void OnGetButtonClicked(object sender, EventArgs e)
-	{
-		await LoadAllTerms();
-	}
-	private async Task LoadAllTerms()
-	{
 		List<Term> terms = await App.DbHandler.GetAllTermsAsync();
-		TermView termView = new(terms, false);
-		TermLayout.Add(termView);
+		BindableLayout.SetItemsSource(termList, terms);
 	}
 }
 

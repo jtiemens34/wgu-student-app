@@ -25,7 +25,7 @@ public partial class CoursePage : ContentPage
 	private async Task LoadAllCourses()
 	{
         List<Course> courses = await App.DbHandler.GetAllCoursesAsync();
-        CourseView courseView = new(courses);
+        CourseView courseView = new();
         CourseLayout.Add(courseView);
     }
 	private async Task LoadAllCourses(Term term)
