@@ -10,15 +10,26 @@
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Start">
-            <Button Text="Add Term 1"
-                    Clicked="OnNewButtonClicked" />
-            <VerticalStackLayout x:Name="termList">
+            <VerticalStackLayout x:Name="termList"
+                                 Margin="0, 10">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
                         <local:TermView />
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </VerticalStackLayout>
+            <Border HorizontalOptions="EndAndExpand" 
+                    VerticalOptions="EndAndExpand"
+                    HeightRequest="80"
+                    WidthRequest="80"
+                    Stroke="{StaticResource WGUDarkBlue}"
+                    StrokeShape="Ellipse"
+                    BackgroundColor="{StaticResource WGUDarkBlue}">
+                <Button Text="+"
+                        TextColor="White"
+                        BackgroundColor="Transparent"
+                        Clicked="OnNewButtonClicked" />
+            </Border>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

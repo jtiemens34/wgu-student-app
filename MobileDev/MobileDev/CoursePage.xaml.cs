@@ -15,25 +15,7 @@ public partial class CoursePage : ContentPage
     }
 	public async void OnLoad(object sender, EventArgs e)
 	{
-		await LoadAllCourses();
-	}
-	public async void OnGetButtonClicked(object sender, EventArgs e)
-	{
-		await LoadAllCourses();
-	}
-
-	private async Task LoadAllCourses()
-	{
-        List<Course> courses = await App.DbHandler.GetAllCoursesAsync();
-        CourseView courseView = new();
-        CourseLayout.Add(courseView);
-    }
-	private async Task LoadAllCourses(Term term)
-	{
-		List<Course> courses = await App.DbHandler.GetAllCoursesFromTermAsync(term);
-		foreach (Course course in courses)
-		{
-			
-		}
+		List<Course> courses = await App.DbHandler.GetAllCoursesAsync();
+		BindableLayout.SetItemsSource(courseList, courses);
 	}
 }
