@@ -30,5 +30,15 @@ namespace MobileDev
         public CourseStatus CourseStatus { get; set; }
         [Column("credits")]
         public int Credits { get; set; }
+        [Column("start_date")]
+        public DateTime StartDate { get; set; }
+        [Column("end_date")]
+        public DateTime EndDate { get; set; }
+        [Column("instructor_name")]
+        public string InstructorName { get; set; }
+        [Column("instructor_phone")]
+        public string InstructorPhone { get; set; }
+        [Column("instructor_email")]
+        public string InstructorEmail { get; set; }
     }
 }

@@ -12,10 +12,14 @@ public partial class CoursePage : ContentPage
 	public async void OnNewButtonClicked(object sender, EventArgs e)
 	{
 		await Navigation.PushModalAsync(new AddCourseModal());
+		await LoadCourses();
     }
 	public async void OnLoad(object sender, EventArgs e)
 	{
-		List<Course> courses = await App.DbHandler.GetAllCoursesAsync();
-		BindableLayout.SetItemsSource(courseList, courses);
-	}
+		await LoadCourses();
+    }
+	private async Task LoadCourses()
+	{
+        BindableLayout.SetItemsSource(courseList, await App.DbHandler.GetAllCoursesAsync());
+    }
 }

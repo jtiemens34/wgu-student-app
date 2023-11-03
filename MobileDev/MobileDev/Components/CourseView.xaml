@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MobileDev.Components"
              x:Class="MobileDev.Components.CourseView">
     <Border Stroke="{StaticResource WGULightBlue}"
             StrokeThickness="0.5"
@@ -12,18 +13,20 @@
             VerticalOptions="Start">
         <FlexLayout>
             <HorizontalStackLayout FlexLayout.Basis="50">
-                <Image Source="completedcourseicon.png"
-                       WidthRequest="30"
-                       Margin="10, 0, 0, 0" />
+                <Image WidthRequest="30"
+                       Margin="10, 0, 0, 0"
+                       Source="{Binding CourseStatus,
+                                        Converter={local:CourseStatusIconConverter}}" />
                 <AbsoluteLayout Padding="10, 0, 10, 0">
-                    <Label Text="3"
-                           TextColor="{StaticResource ProgressFilled}" />
+                    <Label Text="{Binding Credits}"
+                           TextColor="{Binding CourseStatus,
+                                               Converter={local:CourseStatusColorConverter}}" />
                 </AbsoluteLayout>
             </HorizontalStackLayout>
             <Grid ColumnDefinitions="*, *, *"
                   RowDefinitions="*, *"
                   FlexLayout.Grow="1">
-                <Label Text="Software Design and QA - D480" 
+                <Label Text="{Binding Name}" 
                        Margin="20, 0"
                        TextColor="{StaticResource WGULightBlue}"
                        Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" />
@@ -37,7 +40,12 @@
                 </HorizontalStackLayout>
                 <HorizontalStackLayout Grid.Column="2" Grid.Row="1"
                                        HorizontalOptions="EndAndExpand">
-                    <Label Text="09/01/23 - 09/15/23"
+                    <Label Text="{Binding StartDate, 
+                                  StringFormat='{0:MM}/{0:dd}/{0:yy}'}"
+                           TextColor="Black" />
+                    <Label Text="-" TextColor="Black" />
+                    <Label Text="{Binding EndDate, 
+                                  StringFormat='{0:MM}/{0:dd}/{0:yy}'}"
                            TextColor="Black" />
                     <Image WidthRequest="20" Source="datepickicon.png"
                            Margin="10, 0, 0, 5"/>

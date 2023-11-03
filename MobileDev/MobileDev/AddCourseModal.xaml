@@ -23,9 +23,28 @@
         </VerticalStackLayout.Resources>
         <Border BackgroundColor="{StaticResource ItemBackground}">
             <VerticalStackLayout>
-            <Label Text="Software Design and QA - D480" 
-                   Margin="0"
-                   TextColor="{StaticResource WGULightBlue}" />
+                <Border>
+                    <HorizontalStackLayout>
+                        <Label Text="Course Name" />
+                        <Border BackgroundColor="{StaticResource WGUDarkBlue}">
+                            <Entry WidthRequest="200" x:Name="courseName" />
+                        </Border>
+                    </HorizontalStackLayout>
+                </Border>
+                <Border>
+                    <HorizontalStackLayout>
+                        <Label Text="Credits" />
+                        <Border BackgroundColor="{StaticResource WGUDarkBlue}">
+                            <HorizontalStackLayout>
+                                <Label Text="{Binding Source={x:Reference credits}, Path=Value}" TextColor="White" />
+                                <Stepper Value="2"
+                                         Minimum="1" Maximum="3"
+                                         Increment="1"
+                                         x:Name="credits" />
+                            </HorizontalStackLayout>
+                        </Border>
+                    </HorizontalStackLayout>
+                </Border>
                 <Border>
                     <HorizontalStackLayout>
                         <Label Text="Course Status" />
@@ -47,7 +66,7 @@
                     <HorizontalStackLayout>
                         <Label Text="Start Date" />
                         <Border BackgroundColor="{StaticResource WGUDarkBlue}">
-                            <DatePicker />
+                            <DatePicker x:Name="startDate" />
                         </Border>
                     </HorizontalStackLayout>
                 </Border>
@@ -55,7 +74,7 @@
                     <HorizontalStackLayout>
                         <Label Text="End Date" />
                         <Border BackgroundColor="{StaticResource WGUDarkBlue}">
-                            <DatePicker />
+                            <DatePicker x:Name="endDate" />
                         </Border>
                     </HorizontalStackLayout>
                 </Border>
@@ -63,7 +82,7 @@
                     <HorizontalStackLayout>
                         <Label Text="Instructor Name" />
                         <Border BackgroundColor="{StaticResource WGUDarkBlue}">
-                            <Entry WidthRequest="200" />
+                            <Entry WidthRequest="200" x:Name="instructorName" />
                         </Border>
                     </HorizontalStackLayout>
                 </Border>
@@ -71,7 +90,7 @@
                     <HorizontalStackLayout>
                         <Label Text="Instructor Phone Number" />
                         <Border BackgroundColor="{StaticResource WGUDarkBlue}">
-                            <Entry WidthRequest="200" />
+                            <Entry WidthRequest="200" x:Name="instructorPhone" />
                         </Border>
                     </HorizontalStackLayout>
                 </Border>
@@ -79,15 +98,16 @@
                     <HorizontalStackLayout>
                         <Label Text="Instructor Email" />
                         <Border BackgroundColor="{StaticResource WGUDarkBlue}">
-                            <Entry WidthRequest="200" />
+                            <Entry WidthRequest="200" x:Name="instructorEmail" />
                         </Border>
                     </HorizontalStackLayout>
                 </Border>
                 <HorizontalStackLayout HorizontalOptions="Fill">
-                    <Button Text="Cancel" />
+                    <Button Text="Cancel" Clicked="OnCancelClicked" />
                     <Button Text="Save"
                             BackgroundColor="{StaticResource ProgressFilled}"
-                            TextColor="White" />
+                            TextColor="White"
+                            Clicked="OnSaveClicked" />
                 </HorizontalStackLayout>
             </VerticalStackLayout>
         </Border>
