@@ -11,7 +11,7 @@ public partial class CoursePage : ContentPage
 
 	public async void OnNewButtonClicked(object sender, EventArgs e)
 	{
-        await App.DbHandler.AddNewCourseAsync("Software QA");
+		await Navigation.PushModalAsync(new AddCourseModal());
     }
 	public async void OnLoad(object sender, EventArgs e)
 	{
