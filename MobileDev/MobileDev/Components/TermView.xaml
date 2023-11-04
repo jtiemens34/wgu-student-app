@@ -16,20 +16,16 @@
                        TextColor="White"
                        HorizontalOptions="Center"
                        Margin="0, 0, 10, 0" />
-                <Image Source="editicon.png"
-                       WidthRequest="15" 
-                       HorizontalOptions="Center"
-                       Margin="0, 0, 5, 0" />
-                <Image Source="deleteicon.png" WidthRequest="15" HorizontalOptions="Center" />
             </HorizontalStackLayout>
             <HorizontalStackLayout Grid.Column="2" 
                                    HorizontalOptions="EndAndExpand"
                                    Margin="0, 0, 10, 0">
                 <VerticalStackLayout Margin="0, 0, 10, 0">
-                    <Label Text="{Binding StartDate}" TextColor="White" />
-                    <Label Text="{Binding EndDate}" TextColor="White" />
+                    <Label Text="{Binding StartDate, 
+                                  StringFormat='{0:MM}/{0:dd}/{0:yy}'}" />
+                    <Label Text="{Binding EndDate, 
+                                  StringFormat='{0:MM}/{0:dd}/{0:yy}'}" />
                 </VerticalStackLayout>
-                <Image Source="datepickicon.png" WidthRequest="30" />
             </HorizontalStackLayout>
         </Grid>
     </Border>
