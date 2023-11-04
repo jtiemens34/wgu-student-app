@@ -62,6 +62,7 @@
 	  <None Remove="Resources\Images\termsicon.svg" />
 	  <None Remove="Resources\Images\uncompletedcourseicon.png" />
 	  <None Remove="Resources\Images\uncompletedribbonicon.png" />
+	  <None Remove="Resources\Images\wgulogo.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -71,12 +72,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="EditCourseModal.xaml.cs">
+	    <DependentUpon>EditCourseModal.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="TermPage.xaml.cs">
 	    <DependentUpon>TermPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="EditCourseModal.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="AddCourseModal.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

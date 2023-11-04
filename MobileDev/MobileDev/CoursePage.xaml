@@ -10,6 +10,9 @@
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Start">
+            <Image Source="wgulogo.png" WidthRequest="150" 
+                       HorizontalOptions="Start"
+                       Margin="10" />
             <VerticalStackLayout x:Name="courseList">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>

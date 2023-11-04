@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MobileDev.AddCourseModal"
-             Title="AddCourseModal">
+             x:Class="MobileDev.EditCourseModal"
+             Title="EditCourseModal">
     <VerticalStackLayout Padding="5" Margin="10">
         <VerticalStackLayout.Resources>
             <Style TargetType="Border">
@@ -23,10 +23,6 @@
         </VerticalStackLayout.Resources>
         <Border BackgroundColor="{StaticResource ItemBackground}">
             <VerticalStackLayout>
-                <Image Source="wgulogo.png" WidthRequest="150" 
-                       HorizontalOptions="Start"
-                       Margin="10" />
-                <Label Text="Adding a New Course" />
                 <Border>
                     <HorizontalStackLayout>
                         <Label Text="Course Name" />
