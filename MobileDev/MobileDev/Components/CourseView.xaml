@@ -15,6 +15,7 @@
             <TapGestureRecognizer Tapped="OnCourseClick" />
         </Border.GestureRecognizers>
         <FlexLayout>
+            <Label Text="{Binding Id}" x:Name="id" IsVisible="false" />
             <HorizontalStackLayout FlexLayout.Basis="50">
                 <Image WidthRequest="30"
                        Margin="10, 0, 0, 0"
@@ -26,9 +27,11 @@
                                                Converter={local:CourseStatusColorConverter}}"
                            AbsoluteLayout.LayoutBounds="0, 0, 10, 17" />
                     <Image ZIndex="-1"
+                           WidthRequest="13"
+                           Aspect="Fill"
                            Source="{Binding CourseStatus,
                                             Converter={local:CourseStatusRibbonConverter}}"
-                           AbsoluteLayout.LayoutBounds="0, 0, 10, 17" />
+                           AbsoluteLayout.LayoutBounds="-1.3, 0, 11, 30" />
                 </AbsoluteLayout>
             </HorizontalStackLayout>
             <Grid ColumnDefinitions="*, *, *"
