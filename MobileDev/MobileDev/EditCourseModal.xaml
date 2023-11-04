@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileDev.EditCourseModal"
-             Title="EditCourseModal">
+             Title="EditCourseModal"
+             Loaded="OnLoad">
     <VerticalStackLayout Padding="5" Margin="10">
         <VerticalStackLayout.Resources>
             <Style TargetType="Border">
@@ -23,6 +24,10 @@
         </VerticalStackLayout.Resources>
         <Border BackgroundColor="{StaticResource ItemBackground}">
             <VerticalStackLayout>
+                <Image Source="wgulogo.png" WidthRequest="150" 
+                       HorizontalOptions="Start"
+                       Margin="10" />
+                <Label Text="Editing a Course" />
                 <Border>
                     <HorizontalStackLayout>
                         <Label Text="Course Name" />
@@ -108,6 +113,10 @@
                             BackgroundColor="{StaticResource ProgressFilled}"
                             TextColor="White"
                             Clicked="OnSaveClicked" />
+                    <Button Text="Delete"
+                            TextColor="White"
+                            BackgroundColor="Red"
+                            Clicked="OnDeleteClicked" />
                 </HorizontalStackLayout>
             </VerticalStackLayout>
         </Border>

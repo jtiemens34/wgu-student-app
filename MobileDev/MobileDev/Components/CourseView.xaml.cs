@@ -10,7 +10,7 @@ public partial class CourseView : ContentView
 	}
     public async void OnCourseClick(object sender, EventArgs e)
     {
-        await Navigation.PushModalAsync(new AddCourseModal());
+        await Navigation.PushModalAsync(new EditCourseModal(int.Parse(id.Text)));
     }
 }
 public class CourseStatusIconConverter : IValueConverter
