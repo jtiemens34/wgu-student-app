@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileDev.AddTermModal"
+             Title="AddTermModal">
+    <VerticalStackLayout Padding="5" Margin="10">
+        <VerticalStackLayout.Resources>
+            <Style TargetType="Border">
+                <Setter Property="Stroke" Value="{StaticResource WGULightBlue}" />
+                <Setter Property="StrokeThickness" Value="0.5" />
+                <Setter Property="StrokeShape" Value="RoundRectangle 5, 5, 5, 5" />
+                <Setter Property="BackgroundColor" Value="#D9D9D9" />
+                <Setter Property="Margin" Value="5, 5" />
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="Margin" Value="10, 0, 10, 0" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+            <Style TargetType="Picker">
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+        </VerticalStackLayout.Resources>
+        <Border BackgroundColor="{StaticResource ItemBackground}">
+            <VerticalStackLayout>
+                <Image Source="wgulogo.png" WidthRequest="150" 
+                       HorizontalOptions="Start"
+                       Margin="10" />
+                <Label Text="Adding a New Term" />
+                <Border>
+                    <HorizontalStackLayout>
+                        <Label Text="Term Name" />
+                        <Border BackgroundColor="{StaticResource WGUDarkBlue}">
+                            <Entry WidthRequest="200" x:Name="termName" />
+                        </Border>
+                    </HorizontalStackLayout>
+                </Border>
+                <Border>
+                    <HorizontalStackLayout>
+                        <Label Text="Start Date" />
+                        <Border BackgroundColor="{StaticResource WGUDarkBlue}">
+                            <DatePicker x:Name="startDate" />
+                        </Border>
+                    </HorizontalStackLayout>
+                </Border>
+                <Border>
+                    <HorizontalStackLayout>
+                        <Label Text="End Date" />
+                        <Border BackgroundColor="{StaticResource WGUDarkBlue}">
+                            <DatePicker x:Name="endDate" />
+                        </Border>
+                    </HorizontalStackLayout>
+                </Border>
+                <HorizontalStackLayout HorizontalOptions="Fill">
+                    <Button Text="Cancel" Clicked="OnCancelClicked" />
+                    <Button Text="Save"
+                            BackgroundColor="{StaticResource ProgressFilled}"
+                            TextColor="White"
+                            Clicked="OnSaveClicked" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Border>
+    </VerticalStackLayout>
+</ContentPage>

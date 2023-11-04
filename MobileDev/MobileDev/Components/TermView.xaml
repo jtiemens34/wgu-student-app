@@ -9,7 +9,11 @@
             MinimumHeightRequest="50"
             MaximumHeightRequest="50"
             VerticalOptions="Start">
+        <Border.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnTermClick" />
+        </Border.GestureRecognizers>
         <Grid ColumnDefinitions="*, *, *">
+            <Label Text="{Binding Id}" IsVisible="false" x:Name="id" />
             <HorizontalStackLayout Grid.Column="0"
                                    Margin="10">
                 <Label Text="{Binding Name}" 

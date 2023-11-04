@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MobileDev.Components"
              x:Class="MobileDev.TermPage"
-             Loaded="OnLoad">
+             Loaded="OnLoad"
+             NavigatedTo="OnLoad">
     <ScrollView>
         <VerticalStackLayout
             x:Name="TermLayout"

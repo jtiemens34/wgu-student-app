@@ -10,12 +10,16 @@ public partial class TermPage : ContentPage
     }
 	public async void OnNewButtonClicked(object sender, EventArgs e)
 	{
-		await App.DbHandler.AddNewTermAsync("Term 1");
+		await Navigation.PushModalAsync(new AddTermModal());
+		await LoadTerms();
 	}
 	public async void OnLoad(object sender, EventArgs e)
 	{
-		List<Term> terms = await App.DbHandler.GetAllTermsAsync();
-		BindableLayout.SetItemsSource(termList, terms);
+		await LoadTerms();
+	}
+	private async Task LoadTerms()
+	{
+		BindableLayout.SetItemsSource(termList, await App.DbHandler.GetAllTermsAsync());
 	}
 }
 
