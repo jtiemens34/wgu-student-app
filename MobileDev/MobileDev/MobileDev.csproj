@@ -50,13 +50,18 @@
 	<ItemGroup>
 	  <None Remove="Resources\Images\assessmentsicon.svg" />
 	  <None Remove="Resources\Images\completedcourseicon.png" />
+	  <None Remove="Resources\Images\completedribbonicon.png" />
 	  <None Remove="Resources\Images\coursesicon.svg" />
 	  <None Remove="Resources\Images\datepickicon.svg" />
 	  <None Remove="Resources\Images\deleteicon.svg" />
 	  <None Remove="Resources\Images\editicon.svg" />
 	  <None Remove="Resources\Images\editicondark.png" />
+	  <None Remove="Resources\Images\failedcourseicon.png" />
+	  <None Remove="Resources\Images\failedribbonicon.png" />
 	  <None Remove="Resources\Images\performancecompleted.png" />
 	  <None Remove="Resources\Images\termsicon.svg" />
+	  <None Remove="Resources\Images\uncompletedcourseicon.png" />
+	  <None Remove="Resources\Images\uncompletedribbonicon.png" />
 	</ItemGroup>
 
 	<ItemGroup>
