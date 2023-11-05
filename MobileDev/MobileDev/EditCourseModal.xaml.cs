@@ -2,7 +2,7 @@ namespace MobileDev;
 
 public partial class EditCourseModal : ContentPage
 {
-    private int CourseId;
+    private readonly int CourseId;
     private Course Course;
 	public EditCourseModal(int courseId)
 	{

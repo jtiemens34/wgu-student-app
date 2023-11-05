@@ -49,11 +49,13 @@ namespace MobileDev
                 await Init();
                 if (string.IsNullOrEmpty(name)) throw new Exception("Valid name required!");
 
-                Term term = new();
-                term.Id = 1;
-                term.Name = name;
-                term.StartDate = DateTime.Now;
-                term.EndDate = DateTime.Now;
+                Term term = new()
+                {
+                    Id = 1,
+                    Name = name,
+                    StartDate = DateTime.Now,
+                    EndDate = DateTime.Now
+                };
                 await _db.InsertAsync(term);
             } 
             catch (Exception ex)
@@ -169,12 +171,14 @@ namespace MobileDev
                 await Init();
                 if (string.IsNullOrEmpty(name)) throw new Exception("Valid name required!");
 
-                Assessment assessment = new();
-                assessment.Id = 1;
-                assessment.Name = name;
-                assessment.CourseId = 1;
-                assessment.Date = DateTime.Now;
-                assessment.Type = AssessmentType.Performance;
+                Assessment assessment = new()
+                {
+                    Id = 1,
+                    Name = name,
+                    CourseId = 1,
+                    Date = DateTime.Now,
+                    Type = AssessmentType.Performance
+                };
                 await _db.InsertAsync(assessment);
             }
             catch (Exception ex)

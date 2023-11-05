@@ -2,7 +2,7 @@ namespace MobileDev;
 
 public partial class EditTermModal : ContentPage
 {
-    private int TermId;
+    private readonly int TermId;
     private Term Term;
 	public EditTermModal(int termId)
 	{
