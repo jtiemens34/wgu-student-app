@@ -48,6 +48,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\arrowexpandicon.png" />
+	  <None Remove="Resources\Images\arrowretracticon.png" />
 	  <None Remove="Resources\Images\assessmentsicon.svg" />
 	  <None Remove="Resources\Images\completedcourseicon.png" />
 	  <None Remove="Resources\Images\completedribbonicon.png" />

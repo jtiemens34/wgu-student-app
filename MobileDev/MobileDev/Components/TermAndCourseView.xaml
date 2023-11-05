@@ -19,6 +19,10 @@
                 <Label Text="{Binding Id}" IsVisible="false" x:Name="id" />
                 <HorizontalStackLayout Grid.Column="0"
                                        Margin="10">
+                    <Image x:Name="arrowIcon"
+                           Source="arrowretracticon.png"
+                           WidthRequest="20"
+                           Margin="0, 0, 10, 0" />
                     <Label Text="{Binding Name}" 
                            TextColor="White"
                            HorizontalOptions="Center"

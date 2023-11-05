@@ -9,9 +9,10 @@ public partial class TermAndCourseView : ContentView
         Term = term;
         this.BindingContext = Term;
 	}
-    public async void OnTermClick(object sender, EventArgs e)
+    public void OnTermClick(object sender, EventArgs e)
     {
-        
+        courseList.IsVisible = !courseList.IsVisible;
+        arrowIcon.Source = courseList.IsVisible ? "arrowretracticon.png" : "arrowexpandicon.png";
     }
     public async void OnLoad(object sender, EventArgs e)
     {
