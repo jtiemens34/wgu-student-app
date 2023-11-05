@@ -8,18 +8,19 @@ public partial class CoursePage : ContentPage
 	{
 		InitializeComponent();
 	}
-
 	public async void OnNewButtonClicked(object sender, EventArgs e)
 	{
 		await Navigation.PushModalAsync(new AddCourseModal());
-		await LoadCourses();
+		await LoadTerms();
     }
 	public async void OnLoad(object sender, EventArgs e)
 	{
-		await LoadCourses();
+        await LoadTerms();
     }
-	private async Task LoadCourses()
+	private async Task LoadTerms()
 	{
-        BindableLayout.SetItemsSource(courseList, await App.DbHandler.GetAllCoursesAsync());
-    }
+		termList.Children.Clear();
+		List<Term> terms = await App.DbHandler.GetAllTermsAsync();
+		foreach (Term term in terms) termList.Add(new TermAndCourseView(term));
+	}
 }

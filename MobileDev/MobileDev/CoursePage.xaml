@@ -14,10 +14,9 @@
             <Image Source="wgulogo.png" WidthRequest="150" 
                        HorizontalOptions="Start"
                        Margin="10" />
-            <VerticalStackLayout x:Name="courseList">
+            <VerticalStackLayout x:Name="termList">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <local:CourseView />
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </VerticalStackLayout>

@@ -120,7 +120,7 @@ namespace MobileDev
         public async Task<List<Course>> GetAllCoursesFromTermAsync(Term term)
         {
             List<Course> courses = new();
-            int termId = term.Id;
+            int termId = term.Id - 1;
             try
             {
                 await Init();
