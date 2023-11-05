@@ -28,11 +28,12 @@ public partial class EditCourseModal : ContentPage
 	}
 	public async void OnSaveClicked(object sender, EventArgs e)
 	{
-        if (courseName.Text == null) await this.DisplayAlert("Error", "Course Name can not be empty!", "OK");
-        if (instructorName.Text == null) await this.DisplayAlert("Error", "Instructor Name can not be empty!", "OK");
-        if (instructorPhone.Text == null) await this.DisplayAlert("Error", "Instructor Phone can not be empty!", "OK");
-        if (instructorEmail.Text == null) await this.DisplayAlert("Error", "Instructor Email can not be empty!", "OK");
-        if (courseName.Text == null || instructorName.Text == null || instructorPhone.Text == null || instructorEmail.Text == null) return;
+        if (String.IsNullOrEmpty(courseName.Text)) await this.DisplayAlert("Error", "Course Name can not be empty!", "OK");
+        if (String.IsNullOrEmpty(instructorName.Text)) await this.DisplayAlert("Error", "Instructor Name can not be empty!", "OK");
+        if (String.IsNullOrEmpty(instructorPhone.Text)) await this.DisplayAlert("Error", "Instructor Phone can not be empty!", "OK");
+        if (String.IsNullOrEmpty(instructorEmail.Text)) await this.DisplayAlert("Error", "Instructor Email can not be empty!", "OK");
+        if (String.IsNullOrEmpty(courseName.Text ) || String.IsNullOrEmpty(instructorName.Text) 
+            || String.IsNullOrEmpty(instructorPhone.Text) || String.IsNullOrEmpty(instructorEmail.Text)) return;
         Course.Name = courseName.Text;
         Course.Credits = (int)credits.Value;
         Course.CourseStatus = (CourseStatus)courseStatus.SelectedIndex;

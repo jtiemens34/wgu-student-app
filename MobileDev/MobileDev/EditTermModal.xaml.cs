@@ -23,8 +23,7 @@ public partial class EditTermModal : ContentPage
 	}
 	public async void OnSaveClicked(object sender, EventArgs e)
 	{
-        // TODO: Fix validation not working on Edit Term Modal
-        if (termName.Text == null)
+        if (String.IsNullOrEmpty(termName.Text))
         {
             await this.DisplayAlert("Error", "Term Name can not be empty!", "OK");
             return;
