@@ -11,6 +11,7 @@ public partial class EditCourseModal : ContentPage
 	}
     public async void OnLoad(object sender, EventArgs e)
     {
+        // Populate default values
         Course = await App.DbHandler.GetCourseAsync(CourseId);
         courseName.Text = Course.Name;
         credits.Value = Course.Credits;
@@ -20,6 +21,16 @@ public partial class EditCourseModal : ContentPage
         instructorName.Text = Course.InstructorName;
         instructorPhone.Text = Course.InstructorPhone;
         instructorEmail.Text = Course.InstructorEmail;
+
+        // Populate Term picker
+        Binding binding = new()
+        {
+            Source = await App.DbHandler.GetAllTermsAsync()
+        };
+        term.SetBinding(Picker.ItemsSourceProperty, binding);
+        term.ItemDisplayBinding = new Binding("Name");
+
+        term.SelectedIndex = Course.TermId;
     }
 	public async void OnCancelClicked(object sender, EventArgs e)
 	{
@@ -35,6 +46,7 @@ public partial class EditCourseModal : ContentPage
         if (String.IsNullOrEmpty(courseName.Text ) || String.IsNullOrEmpty(instructorName.Text) 
             || String.IsNullOrEmpty(instructorPhone.Text) || String.IsNullOrEmpty(instructorEmail.Text)) return;
         Course.Name = courseName.Text;
+        Course.TermId = term.SelectedIndex;
         Course.Credits = (int)credits.Value;
         Course.CourseStatus = (CourseStatus)courseStatus.SelectedIndex;
         Course.StartDate = startDate.Date;

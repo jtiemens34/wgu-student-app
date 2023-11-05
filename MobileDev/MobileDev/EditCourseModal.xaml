@@ -38,6 +38,14 @@
                 </Border>
                 <Border>
                     <HorizontalStackLayout>
+                        <Label Text="Term Association" />
+                        <Border BackgroundColor="{StaticResource WGUDarkBlue}">
+                            <Picker x:Name="term" />
+                        </Border>
+                    </HorizontalStackLayout>
+                </Border>
+                <Border>
+                    <HorizontalStackLayout>
                         <Label Text="Credits" />
                         <Border BackgroundColor="{StaticResource WGUDarkBlue}">
                             <HorizontalStackLayout>

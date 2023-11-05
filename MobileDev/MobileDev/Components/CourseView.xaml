@@ -55,6 +55,7 @@
             <HorizontalStackLayout FlexLayout.Basis="50"
                                    HorizontalOptions="Center"
                                    VerticalOptions="Center" >
+                <Label Text="{Binding TermId}" TextColor="Black" />
                 <Image Source="performancecompleted.png"
                        WidthRequest="20"/>
             </HorizontalStackLayout>
