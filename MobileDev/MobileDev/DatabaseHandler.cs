@@ -34,6 +34,7 @@ namespace MobileDev
                 await _db.CreateTableAsync<Course>();
                 await _db.CreateTableAsync<Term>();
                 await _db.CreateTableAsync<Assessment>();
+                await _db.CreateTableAsync<Note>();
             }
             catch (Exception ex)
             {
@@ -160,6 +161,58 @@ namespace MobileDev
         {
             await Init();
             return await _db.DeleteAsync(course);
+        }
+        #endregion
+
+        #region Notes
+        public async Task AddNewNoteAsync(int courseId)
+        {
+            try
+            {
+                await Init();
+                if (courseId == 0) throw new Exception("Valid course ID required!");
+
+                Note note = new()
+                {
+                    CourseId = courseId
+                };
+                await _db.InsertAsync(note);
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = ex.Message;
+            }
+        }
+        public async Task<List<Note>> GetAllNotesFromCourseAsync(int courseId)
+        {
+            List<Note> notes = new();
+            courseId--;
+            try
+            {
+                await Init();
+                notes = await _db.Table<Note>().Where(o => o.CourseId == courseId).ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = ex.Message;
+            }
+            return notes;
+        }
+        public async Task<int> SaveNoteAsync(Note note)
+        {
+            await Init();
+            if (note.Id != 0) return await _db.UpdateAsync(note);
+            else return await _db.InsertAsync(note);
+        }
+        public async Task<Note> GetNoteAsync(int id)
+        {
+            await Init();
+            return await _db.Table<Note>().Where(i => i.Id == id).FirstOrDefaultAsync();
+        }
+        public async Task<int> DeleteNoteAsync(Note note)
+        {
+            await Init();
+            return await _db.DeleteAsync(note);
         }
         #endregion
 
