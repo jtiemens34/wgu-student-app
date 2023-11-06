@@ -40,5 +40,8 @@ namespace MobileDev
         public string InstructorPhone { get; set; }
         [Column("instructor_email")]
         public string InstructorEmail { get; set; }
+
+        [Column("notes")]
+        public string Notes { get; set; }
     }
 }

@@ -37,7 +37,8 @@ public partial class AddCourseModal : ContentPage
             EndDate = endDate.Date,
             InstructorName = instructorName.Text,
             InstructorPhone = instructorPhone.Text,
-            InstructorEmail = instructorEmail.Text
+            InstructorEmail = instructorEmail.Text,
+            Notes = notes.Text
         };
         await App.DbHandler.SaveCourseAsync(addCourse);
         await Navigation.PopModalAsync();

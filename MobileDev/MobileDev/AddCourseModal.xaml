@@ -115,6 +115,15 @@
                         </Border>
                     </HorizontalStackLayout>
                 </Border>
+                <Border>
+                    <HorizontalStackLayout>
+                        <Label Text="Notes" />
+                        <Border BackgroundColor="{StaticResource WGUDarkBlue}">
+                            <Entry WidthRequest="200" x:Name="notes" />
+                        </Border>
+                        <Button Text="Share" Clicked="OnShareClicked" />
+                    </HorizontalStackLayout>
+                </Border>
                 <HorizontalStackLayout HorizontalOptions="Fill">
                     <Button Text="Cancel" Clicked="OnCancelClicked" />
                     <Button Text="Save"

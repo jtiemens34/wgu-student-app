@@ -21,6 +21,7 @@ public partial class EditCourseModal : ContentPage
         instructorName.Text = Course.InstructorName;
         instructorPhone.Text = Course.InstructorPhone;
         instructorEmail.Text = Course.InstructorEmail;
+        notes.Text = Course.Notes;
 
         // Populate Term picker
         Binding binding = new()
@@ -54,6 +55,7 @@ public partial class EditCourseModal : ContentPage
         Course.InstructorName = instructorName.Text;
         Course.InstructorPhone = instructorPhone.Text;
         Course.InstructorEmail = instructorEmail.Text;
+        Course.Notes = notes.Text;
         await App.DbHandler.SaveCourseAsync(Course);
         await Navigation.PopModalAsync();
 	}
