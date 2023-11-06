@@ -6,4 +6,8 @@ public partial class AssessmentPage : ContentPage
 	{
 		InitializeComponent();
 	}
+	public async void OnNewButtonClicked(object sender, EventArgs e)
+	{
+		await Navigation.PushModalAsync(new AddAssessmentModal());
+	}
 }

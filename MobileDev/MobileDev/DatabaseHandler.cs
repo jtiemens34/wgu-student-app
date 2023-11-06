@@ -42,27 +42,6 @@ namespace MobileDev
         }
 
         #region Terms
-        public async Task AddNewTermAsync(string name)
-        {
-            try
-            {
-                await Init();
-                if (string.IsNullOrEmpty(name)) throw new Exception("Valid name required!");
-
-                Term term = new()
-                {
-                    Id = 1,
-                    Name = name,
-                    StartDate = DateTime.Now,
-                    EndDate = DateTime.Now
-                };
-                await _db.InsertAsync(term);
-            } 
-            catch (Exception ex)
-            {
-                StatusMessage = ex.Message;
-            }
-        }
         public async Task<List<Term>> GetAllTermsAsync()
         {
             try
@@ -95,27 +74,18 @@ namespace MobileDev
         #endregion
 
         #region Courses
-        public async Task AddNewCourseAsync(string name) 
+        public async Task<List<Course>> GetAllCoursesAsync()
         {
             try
             {
                 await Init();
-                if (string.IsNullOrEmpty(name)) throw new Exception("Valid name required!");
-
-                Course course = new()
-                {
-                    Id = 1,
-                    Name = name,
-                    CourseStatus = CourseStatus.InProgress,
-                    TermId = 1,
-                    Credits = 3
-                };
-                await _db.InsertAsync(course);
+                return await _db.Table<Course>().ToListAsync();
             }
             catch (Exception ex)
             {
                 StatusMessage = ex.Message;
             }
+            return new List<Course>();
         }
         public async Task<List<Course>> GetAllCoursesFromTermAsync(Term term)
         {
@@ -131,19 +101,6 @@ namespace MobileDev
                 StatusMessage = ex.Message;
             }
             return courses;
-        }
-        public async Task<List<Course>> GetAllCoursesAsync()
-        {
-            try
-            {
-                await Init();
-                return await _db.Table<Course>().ToListAsync();
-            }
-            catch (Exception ex)
-            {
-                StatusMessage = ex.Message;
-            }
-            return new List<Course>();
         }
         public async Task<int> SaveCourseAsync(Course course) 
         {
@@ -164,28 +121,6 @@ namespace MobileDev
         #endregion
 
         #region Assessments
-        public async Task AddNewAssessmentAsync(string name)
-        {
-            try
-            {
-                await Init();
-                if (string.IsNullOrEmpty(name)) throw new Exception("Valid name required!");
-
-                Assessment assessment = new()
-                {
-                    Id = 1,
-                    Name = name,
-                    CourseId = 1,
-                    Date = DateTime.Now,
-                    Type = AssessmentType.Performance
-                };
-                await _db.InsertAsync(assessment);
-            }
-            catch (Exception ex)
-            {
-                StatusMessage = ex.Message;
-            }
-        }
         public async Task<List<Assessment>> GetAllAssessmentsAsync()
         {
             try

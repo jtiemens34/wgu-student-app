@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileDev.EditAssessmentModal"
+             Title="EditAssessmentModal"
+             Loaded="OnLoad">
+    <ScrollView>
+        <VerticalStackLayout Padding="5" Margin="10">
+            <VerticalStackLayout.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="Stroke" Value="{StaticResource WGULightBlue}" />
+                    <Setter Property="StrokeThickness" Value="0.5" />
+                    <Setter Property="StrokeShape" Value="RoundRectangle 5, 5, 5, 5" />
+                    <Setter Property="BackgroundColor" Value="#D9D9D9" />
+                    <Setter Property="Margin" Value="5, 5" />
+                </Style>
+                <Style TargetType="Label">
+                    <Setter Property="TextColor" Value="Black" />
+                    <Setter Property="Margin" Value="10, 0, 10, 0" />
+                    <Setter Property="VerticalOptions" Value="Center" />
+                </Style>
+                <Style TargetType="Picker">
+                    <Setter Property="TextColor" Value="White" />
+                </Style>
+            </VerticalStackLayout.Resources>
+            <Border BackgroundColor="{StaticResource ItemBackground}">
+                <VerticalStackLayout>
+                    <Image Source="wgulogo.png" WidthRequest="150" 
+                           HorizontalOptions="Start"
+                           Margin="10" />
+                    <Label Text="Editing an Assessment" />
+                    <Border>
+                        <HorizontalStackLayout>
+                            <Label Text="Assessment Name" />
+                            <Border BackgroundColor="{StaticResource WGUDarkBlue}">
+                                <Entry WidthRequest="200" x:Name="assessmentName" />
+                            </Border>
+                        </HorizontalStackLayout>
+                    </Border>
+                    <Border>
+                        <HorizontalStackLayout>
+                            <Label Text="Course Association" />
+                            <Border BackgroundColor="{StaticResource WGUDarkBlue}">
+                                <Picker x:Name="course" />
+                            </Border>
+                        </HorizontalStackLayout>
+                    </Border>
+                    <Border>
+                        <HorizontalStackLayout>
+                            <Label Text="Assessment Type" />
+                            <Border BackgroundColor="{StaticResource WGUDarkBlue}">
+                                <Picker x:Name="assessmentType">
+                                    <Picker.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>Objective Assessment</x:String>
+                                            <x:String>Performance Assessment</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
+                                </Picker>
+                            </Border>
+                        </HorizontalStackLayout>
+                    </Border>
+                    <Border>
+                        <HorizontalStackLayout>
+                            <Label Text="Scheduled Date" />
+                            <Border BackgroundColor="{StaticResource WGUDarkBlue}">
+                                <DatePicker x:Name="scheduledDate" />
+                            </Border>
+                        </HorizontalStackLayout>
+                    </Border>
+                    <HorizontalStackLayout HorizontalOptions="Fill">
+                        <Button Text="Cancel" Clicked="OnCancelClicked" />
+                        <Button Text="Save"
+                                BackgroundColor="{StaticResource ProgressFilled}"
+                                TextColor="White"
+                                Clicked="OnSaveClicked" />
+                        <Button Text="Delete"
+                                TextColor="White"
+                                BackgroundColor="Red"
+                                Clicked="OnDeleteClicked" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

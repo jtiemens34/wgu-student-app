@@ -74,8 +74,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="AddAssessmentModal.xaml.cs">
+	    <DependentUpon>AddAssessmentModal.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Components\TermAndCourseView.xaml.cs">
 	    <DependentUpon>TermAndCourseView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="EditAssessmentModal.xaml.cs">
+	    <DependentUpon>EditAssessmentModal.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="EditTermModal.xaml.cs">
 	    <DependentUpon>EditTermModal.xaml</DependentUpon>
@@ -92,7 +98,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="AddAssessmentModal.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Components\TermAndCourseView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="EditAssessmentModal.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="EditTermModal.xaml">
