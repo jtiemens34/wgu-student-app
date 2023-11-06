@@ -15,7 +15,11 @@ public partial class AddCourseModal : ContentPage
         term.SetBinding(Picker.ItemsSourceProperty, binding);
         term.ItemDisplayBinding = new Binding("Name");
     }
-	public async void OnCancelClicked(object sender, EventArgs e)
+    public async void OnShareClicked(object sender, EventArgs e)
+    {
+
+    }
+    public async void OnCancelClicked(object sender, EventArgs e)
 	{
         bool acceptDialog = await this.DisplayAlert("Are you sure you want to leave?", "Your changes will not be saved!", "Yes", "No");
         if (acceptDialog) await Navigation.PopModalAsync();
