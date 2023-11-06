@@ -4,134 +4,136 @@
              x:Class="MobileDev.AddCourseModal"
              Title="AddCourseModal"
              Loaded="OnLoad">
-    <VerticalStackLayout Padding="5" Margin="10">
-        <VerticalStackLayout.Resources>
-            <Style TargetType="Border">
-                <Setter Property="Stroke" Value="{StaticResource WGULightBlue}" />
-                <Setter Property="StrokeThickness" Value="0.5" />
-                <Setter Property="StrokeShape" Value="RoundRectangle 5, 5, 5, 5" />
-                <Setter Property="BackgroundColor" Value="#D9D9D9" />
-                <Setter Property="Margin" Value="5, 5" />
-            </Style>
-            <Style TargetType="Label">
-                <Setter Property="TextColor" Value="Black" />
-                <Setter Property="Margin" Value="10, 0, 10, 0" />
-                <Setter Property="VerticalOptions" Value="Center" />
-            </Style>
-            <Style TargetType="Picker">
-                <Setter Property="TextColor" Value="White" />
-            </Style>
-        </VerticalStackLayout.Resources>
-        <Border BackgroundColor="{StaticResource ItemBackground}">
-            <VerticalStackLayout>
-                <Image Source="wgulogo.png" WidthRequest="150" 
-                       HorizontalOptions="Start"
-                       Margin="10" />
-                <Label Text="Adding a New Course" />
-                <Border>
-                    <HorizontalStackLayout>
-                        <Label Text="Course Name" />
-                        <Border BackgroundColor="{StaticResource WGUDarkBlue}">
-                            <Entry WidthRequest="200" x:Name="courseName" />
-                        </Border>
+    <ScrollView>
+        <VerticalStackLayout Padding="5" Margin="10">
+            <VerticalStackLayout.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="Stroke" Value="{StaticResource WGULightBlue}" />
+                    <Setter Property="StrokeThickness" Value="0.5" />
+                    <Setter Property="StrokeShape" Value="RoundRectangle 5, 5, 5, 5" />
+                    <Setter Property="BackgroundColor" Value="#D9D9D9" />
+                    <Setter Property="Margin" Value="5, 5" />
+                </Style>
+                <Style TargetType="Label">
+                    <Setter Property="TextColor" Value="Black" />
+                    <Setter Property="Margin" Value="10, 0, 10, 0" />
+                    <Setter Property="VerticalOptions" Value="Center" />
+                </Style>
+                <Style TargetType="Picker">
+                    <Setter Property="TextColor" Value="White" />
+                </Style>
+            </VerticalStackLayout.Resources>
+            <Border BackgroundColor="{StaticResource ItemBackground}">
+                <VerticalStackLayout>
+                    <Image Source="wgulogo.png" WidthRequest="150" 
+                           HorizontalOptions="Start"
+                           Margin="10" />
+                    <Label Text="Adding a New Course" />
+                    <Border>
+                        <HorizontalStackLayout>
+                            <Label Text="Course Name" />
+                            <Border BackgroundColor="{StaticResource WGUDarkBlue}">
+                                <Entry WidthRequest="200" x:Name="courseName" />
+                            </Border>
+                        </HorizontalStackLayout>
+                    </Border>
+                    <Border>
+                        <HorizontalStackLayout>
+                            <Label Text="Term Association" />
+                            <Border BackgroundColor="{StaticResource WGUDarkBlue}">
+                                <Picker x:Name="term" />
+                            </Border>
+                        </HorizontalStackLayout>
+                    </Border>
+                    <Border>
+                        <HorizontalStackLayout>
+                            <Label Text="Credits" />
+                            <Border BackgroundColor="{StaticResource WGUDarkBlue}">
+                                <HorizontalStackLayout>
+                                    <Label Text="{Binding Source={x:Reference credits}, Path=Value}" TextColor="White" />
+                                    <Stepper Value="2"
+                                             Minimum="1" Maximum="3"
+                                             Increment="1"
+                                             x:Name="credits" />
+                                </HorizontalStackLayout>
+                            </Border>
+                        </HorizontalStackLayout>
+                    </Border>
+                    <Border>
+                        <HorizontalStackLayout>
+                            <Label Text="Course Status" />
+                            <Border BackgroundColor="{StaticResource WGUDarkBlue}">
+                                <Picker x:Name="courseStatus">
+                                    <Picker.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>In Progress</x:String>
+                                            <x:String>Completed</x:String>
+                                            <x:String>Dropped</x:String>
+                                            <x:String>Plan to Take</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
+                                </Picker>
+                            </Border>
+                        </HorizontalStackLayout>
+                    </Border>
+                    <Border>
+                        <HorizontalStackLayout>
+                            <Label Text="Start Date" />
+                            <Border BackgroundColor="{StaticResource WGUDarkBlue}">
+                                <DatePicker x:Name="startDate" />
+                            </Border>
+                        </HorizontalStackLayout>
+                    </Border>
+                    <Border>
+                        <HorizontalStackLayout>
+                            <Label Text="End Date" />
+                            <Border BackgroundColor="{StaticResource WGUDarkBlue}">
+                                <DatePicker x:Name="endDate" />
+                            </Border>
+                        </HorizontalStackLayout>
+                    </Border>
+                    <Border>
+                        <HorizontalStackLayout>
+                            <Label Text="Instructor Name" />
+                            <Border BackgroundColor="{StaticResource WGUDarkBlue}">
+                                <Entry WidthRequest="200" x:Name="instructorName" />
+                            </Border>
+                        </HorizontalStackLayout>
+                    </Border>
+                    <Border>
+                        <HorizontalStackLayout>
+                            <Label Text="Instructor Phone Number" />
+                            <Border BackgroundColor="{StaticResource WGUDarkBlue}">
+                                <Entry WidthRequest="200" x:Name="instructorPhone" />
+                            </Border>
+                        </HorizontalStackLayout>
+                    </Border>
+                    <Border>
+                        <HorizontalStackLayout>
+                            <Label Text="Instructor Email" />
+                            <Border BackgroundColor="{StaticResource WGUDarkBlue}">
+                                <Entry WidthRequest="200" x:Name="instructorEmail" />
+                            </Border>
+                        </HorizontalStackLayout>
+                    </Border>
+                    <Border>
+                        <HorizontalStackLayout>
+                            <Label Text="Notes" />
+                            <Border BackgroundColor="{StaticResource WGUDarkBlue}">
+                                <Entry WidthRequest="200" x:Name="notes" />
+                            </Border>
+                            <Button Text="Share" Clicked="OnShareClicked" />
+                        </HorizontalStackLayout>
+                    </Border>
+                    <HorizontalStackLayout HorizontalOptions="Fill">
+                        <Button Text="Cancel" Clicked="OnCancelClicked" />
+                        <Button Text="Save"
+                                BackgroundColor="{StaticResource ProgressFilled}"
+                                TextColor="White"
+                                Clicked="OnSaveClicked" />
                     </HorizontalStackLayout>
-                </Border>
-                <Border>
-                    <HorizontalStackLayout>
-                        <Label Text="Term Association" />
-                        <Border BackgroundColor="{StaticResource WGUDarkBlue}">
-                            <Picker x:Name="term" />
-                        </Border>
-                    </HorizontalStackLayout>
-                </Border>
-                <Border>
-                    <HorizontalStackLayout>
-                        <Label Text="Credits" />
-                        <Border BackgroundColor="{StaticResource WGUDarkBlue}">
-                            <HorizontalStackLayout>
-                                <Label Text="{Binding Source={x:Reference credits}, Path=Value}" TextColor="White" />
-                                <Stepper Value="2"
-                                         Minimum="1" Maximum="3"
-                                         Increment="1"
-                                         x:Name="credits" />
-                            </HorizontalStackLayout>
-                        </Border>
-                    </HorizontalStackLayout>
-                </Border>
-                <Border>
-                    <HorizontalStackLayout>
-                        <Label Text="Course Status" />
-                        <Border BackgroundColor="{StaticResource WGUDarkBlue}">
-                            <Picker x:Name="courseStatus">
-                                <Picker.ItemsSource>
-                                    <x:Array Type="{x:Type x:String}">
-                                        <x:String>In Progress</x:String>
-                                        <x:String>Completed</x:String>
-                                        <x:String>Dropped</x:String>
-                                        <x:String>Plan to Take</x:String>
-                                    </x:Array>
-                                </Picker.ItemsSource>
-                            </Picker>
-                        </Border>
-                    </HorizontalStackLayout>
-                </Border>
-                <Border>
-                    <HorizontalStackLayout>
-                        <Label Text="Start Date" />
-                        <Border BackgroundColor="{StaticResource WGUDarkBlue}">
-                            <DatePicker x:Name="startDate" />
-                        </Border>
-                    </HorizontalStackLayout>
-                </Border>
-                <Border>
-                    <HorizontalStackLayout>
-                        <Label Text="End Date" />
-                        <Border BackgroundColor="{StaticResource WGUDarkBlue}">
-                            <DatePicker x:Name="endDate" />
-                        </Border>
-                    </HorizontalStackLayout>
-                </Border>
-                <Border>
-                    <HorizontalStackLayout>
-                        <Label Text="Instructor Name" />
-                        <Border BackgroundColor="{StaticResource WGUDarkBlue}">
-                            <Entry WidthRequest="200" x:Name="instructorName" />
-                        </Border>
-                    </HorizontalStackLayout>
-                </Border>
-                <Border>
-                    <HorizontalStackLayout>
-                        <Label Text="Instructor Phone Number" />
-                        <Border BackgroundColor="{StaticResource WGUDarkBlue}">
-                            <Entry WidthRequest="200" x:Name="instructorPhone" />
-                        </Border>
-                    </HorizontalStackLayout>
-                </Border>
-                <Border>
-                    <HorizontalStackLayout>
-                        <Label Text="Instructor Email" />
-                        <Border BackgroundColor="{StaticResource WGUDarkBlue}">
-                            <Entry WidthRequest="200" x:Name="instructorEmail" />
-                        </Border>
-                    </HorizontalStackLayout>
-                </Border>
-                <Border>
-                    <HorizontalStackLayout>
-                        <Label Text="Notes" />
-                        <Border BackgroundColor="{StaticResource WGUDarkBlue}">
-                            <Entry WidthRequest="200" x:Name="notes" />
-                        </Border>
-                        <Button Text="Share" Clicked="OnShareClicked" />
-                    </HorizontalStackLayout>
-                </Border>
-                <HorizontalStackLayout HorizontalOptions="Fill">
-                    <Button Text="Cancel" Clicked="OnCancelClicked" />
-                    <Button Text="Save"
-                            BackgroundColor="{StaticResource ProgressFilled}"
-                            TextColor="White"
-                            Clicked="OnSaveClicked" />
-                </HorizontalStackLayout>
-            </VerticalStackLayout>
-        </Border>
-    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
