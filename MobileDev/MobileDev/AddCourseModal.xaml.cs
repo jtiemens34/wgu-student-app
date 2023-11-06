@@ -17,7 +17,16 @@ public partial class AddCourseModal : ContentPage
     }
     public async void OnShareClicked(object sender, EventArgs e)
     {
-
+        if (String.IsNullOrEmpty(notes.Text))
+        {
+            await this.DisplayAlert("Error", "Notes must not be empty!", "OK");
+            return;
+        }
+        await Share.Default.RequestAsync(new ShareTextRequest
+        {
+            Text = notes.Text,
+            Title = "Share Notes"
+        });
     }
     public async void OnCancelClicked(object sender, EventArgs e)
 	{
