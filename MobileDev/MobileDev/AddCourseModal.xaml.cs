@@ -40,11 +40,12 @@ public partial class AddCourseModal : ContentPage
         if (String.IsNullOrEmpty(instructorPhone.Text)) await this.DisplayAlert("Error", "Instructor Phone can not be empty!", "OK");
         if (String.IsNullOrEmpty(instructorEmail.Text)) await this.DisplayAlert("Error", "Instructor Email can not be empty!", "OK");
         if (courseName.Text == null || instructorName.Text == null || instructorPhone.Text == null || instructorEmail.Text == null) return;
+        Term selectedTerm = (Term)term.SelectedItem;
         Course addCourse = new()
         {
             CourseStatus = (CourseStatus)courseStatus.SelectedIndex,
             Name = courseName.Text,
-            TermId = term.SelectedIndex,
+            TermId = selectedTerm.Id,
             Credits = (int)credits.Value,
             StartDate = startDate.Date,
             EndDate = endDate.Date,

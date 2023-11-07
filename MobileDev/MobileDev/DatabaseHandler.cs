@@ -121,12 +121,12 @@ namespace MobileDev
         #endregion
 
         #region Assessments
-        public async Task<List<Assessment>> GetAllAssessmentsAsync()
+        public async Task<List<Assessment>> GetAllAssessmentsFromCourseAsync(int courseId)
         {
             try
             {
                 await Init();
-                return await _db.Table<Assessment>().ToListAsync();
+                return await _db.Table<Assessment>().Where(o => o.CourseId == courseId).ToListAsync();
             }
             catch (Exception ex)
             {

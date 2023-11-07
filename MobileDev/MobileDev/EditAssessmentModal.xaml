@@ -68,6 +68,12 @@
                             </Border>
                         </HorizontalStackLayout>
                     </Border>
+                    <Border>
+                        <HorizontalStackLayout>
+                            <Label Text="Completed" />
+                            <CheckBox x:Name="completed" />
+                        </HorizontalStackLayout>
+                    </Border>
                     <HorizontalStackLayout HorizontalOptions="Fill">
                         <Button Text="Cancel" Clicked="OnCancelClicked" />
                         <Button Text="Save"

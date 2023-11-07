@@ -59,8 +59,9 @@ public partial class EditCourseModal : ContentPage
         if (String.IsNullOrEmpty(instructorEmail.Text)) await this.DisplayAlert("Error", "Instructor Email can not be empty!", "OK");
         if (String.IsNullOrEmpty(courseName.Text ) || String.IsNullOrEmpty(instructorName.Text) 
             || String.IsNullOrEmpty(instructorPhone.Text) || String.IsNullOrEmpty(instructorEmail.Text)) return;
+        Term selectedTerm = (Term)term.SelectedItem;
         Course.Name = courseName.Text;
-        Course.TermId = term.SelectedIndex;
+        Course.TermId = selectedTerm.Id;
         Course.Credits = (int)credits.Value;
         Course.CourseStatus = (CourseStatus)courseStatus.SelectedIndex;
         Course.StartDate = startDate.Date;

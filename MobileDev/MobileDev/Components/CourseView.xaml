@@ -2,7 +2,8 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MobileDev.Components"
-             x:Class="MobileDev.Components.CourseView">
+             x:Class="MobileDev.Components.CourseView"
+             Loaded="OnLoad">
     <Border Stroke="{StaticResource WGULightBlue}"
             StrokeThickness="0.5"
             StrokeShape="RoundRectangle 5, 5, 5, 5"
@@ -54,9 +55,13 @@
             </Grid>
             <HorizontalStackLayout FlexLayout.Basis="50"
                                    HorizontalOptions="Center"
-                                   VerticalOptions="Center" >
-                <Image Source="performancecompleted.png"
-                       WidthRequest="20"/>
+                                   VerticalOptions="Center"
+                                   x:Name="assessments">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <local:AssessmentView />
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
             </HorizontalStackLayout>
         </FlexLayout>
     </Border>

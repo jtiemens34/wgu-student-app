@@ -8,9 +8,19 @@ public partial class CourseView : ContentView
 	{
 		InitializeComponent();
 	}
+    public async void OnLoad(object sender, EventArgs e)
+    {
+        await LoadAssessments();
+    }
     public async void OnCourseClick(object sender, EventArgs e)
     {
         await Navigation.PushModalAsync(new EditCourseModal(int.Parse(id.Text)));
+        await LoadAssessments();
+    }
+    private async Task LoadAssessments()
+    {
+        int courseId = int.Parse(id.Text);
+        BindableLayout.SetItemsSource(assessments, await App.DbHandler.GetAllAssessmentsFromCourseAsync(courseId));
     }
 }
 public class CourseStatusIconConverter : IValueConverter

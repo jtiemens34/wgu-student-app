@@ -27,10 +27,12 @@ public partial class AddAssessmentModal : ContentPage
             await this.DisplayAlert("Error", "Assessment Name can not be empty!", "OK");
             return;
         }
+        Course selectedCourse = (Course)course.SelectedItem;
         Assessment addAssessment = new()
         {
             Name = assessmentName.Text,
-            CourseId = course.SelectedIndex,
+            CourseId = selectedCourse.Id,
+            Completed = completed.IsChecked,
             Type = (AssessmentType)assessmentType.SelectedIndex,
             Date = scheduledDate.Date
         };

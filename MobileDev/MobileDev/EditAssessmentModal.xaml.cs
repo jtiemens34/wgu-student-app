@@ -39,9 +39,11 @@ public partial class EditAssessmentModal : ContentPage
             await this.DisplayAlert("Error", "Course Name can not be empty!", "OK");
             return;
         }
+        Course selectedCourse = (Course)course.SelectedItem;
         Assessment.Name = assessmentName.Text;
-        Assessment.CourseId = course.SelectedIndex;
+        Assessment.CourseId = selectedCourse.Id;
         Assessment.Date = scheduledDate.Date;
+        Assessment.Completed = completed.IsChecked;
         Assessment.Type = (AssessmentType)assessmentType.SelectedIndex;
         await App.DbHandler.SaveAssessmentAsync(Assessment);
         await Navigation.PopModalAsync();

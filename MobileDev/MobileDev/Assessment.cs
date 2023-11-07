@@ -21,6 +21,8 @@ namespace MobileDev
 
         [Column("course_id")]
         public int CourseId { get; set; }
+        [Column("completed")]
+        public bool Completed { get; set; }
 
         [Column("name")]
         public string Name { get; set; }
