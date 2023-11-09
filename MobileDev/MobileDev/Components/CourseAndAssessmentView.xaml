@@ -2,21 +2,17 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MobileDev.Components"
-             x:Class="MobileDev.Components.CourseView"
+             x:Class="MobileDev.Components.CourseAndAssessmentView"
              Loaded="OnLoad">
     <Border Stroke="{StaticResource WGULightBlue}"
             StrokeThickness="0.5"
             StrokeShape="RoundRectangle 5, 5, 5, 5"
             Background="{StaticResource ItemBackground}"
-            MinimumHeightRequest="50"
-            MaximumHeightRequest="50"
+            MaximumHeightRequest="250"
             Margin="5"
             VerticalOptions="Start">
-        <Border.GestureRecognizers>
-            <TapGestureRecognizer Tapped="OnCourseClick" />
-        </Border.GestureRecognizers>
         <FlexLayout>
-            <Label Text="{Binding Id}" x:Name="id" IsVisible="false" />
+            <Label Text="{Binding Id}" x:Name="courseId" IsVisible="false" />
             <HorizontalStackLayout FlexLayout.Basis="50">
                 <Image WidthRequest="30"
                        Margin="10, 0, 0, 0"
@@ -36,7 +32,7 @@
                 </AbsoluteLayout>
             </HorizontalStackLayout>
             <Grid ColumnDefinitions="*, *, *"
-                  RowDefinitions="*, *"
+                  RowDefinitions="*, *, *"
                   FlexLayout.Grow="1">
                 <Label Text="{Binding Name}" 
                        Margin="20, 0"
@@ -52,17 +48,8 @@
                                   StringFormat='{0:MM}/{0:dd}/{0:yy}'}"
                            TextColor="Black" />
                 </HorizontalStackLayout>
+                <VerticalStackLayout x:Name="assessments" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" />
             </Grid>
-            <HorizontalStackLayout FlexLayout.Basis="50"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center"
-                                   x:Name="assessments">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <local:AssessmentIcon />
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </HorizontalStackLayout>
         </FlexLayout>
     </Border>
 </ContentView>

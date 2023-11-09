@@ -77,6 +77,15 @@
 	  <Compile Update="AddAssessmentModal.xaml.cs">
 	    <DependentUpon>AddAssessmentModal.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Components\AssessmentIcon.xaml.cs">
+	    <DependentUpon>AssessmentIcon.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Components\CourseAndAssessmentView.xaml.cs">
+	    <DependentUpon>CourseAndAssessmentView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Components\TermCourseAssessmentView.xaml.cs">
+	    <DependentUpon>TermCourseAssessmentView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Components\TermAndCourseView.xaml.cs">
 	    <DependentUpon>TermAndCourseView.xaml</DependentUpon>
 	  </Compile>
@@ -101,7 +110,16 @@
 	  <MauiXaml Update="AddAssessmentModal.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Components\AssessmentIcon.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Components\AssessmentView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\CourseAndAssessmentView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\TermCourseAssessmentView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Components\TermAndCourseView.xaml">

@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MobileDev.AssessmentPage">
+             xmlns:local="clr-namespace:MobileDev.Components"
+             x:Class="MobileDev.AssessmentPage"
+             Loaded="OnLoad"
+             NavigatedTo="OnLoad">
     <ScrollView>
-        <VerticalStackLayout>
-            <Button Text="Add" Clicked="OnNewButtonClicked" />
+        <VerticalStackLayout Spacing="25"
+                             Padding="30,0"
+                             VerticalOptions="Start">
+            <Image Source="wgulogo.png" WidthRequest="150" 
+                       HorizontalOptions="Start"
+                       Margin="10" />
+            <VerticalStackLayout x:Name="termList"
+                                 Margin="0, 10">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>                
+            </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

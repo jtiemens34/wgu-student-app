@@ -1,56 +1,20 @@
-using System;
-using System.Globalization;
-
 namespace MobileDev.Components;
 
 public partial class AssessmentView : ContentView
 {
-	public AssessmentView()
+    private int CourseId;
+	public AssessmentView(int courseId, Assessment assessment)
 	{
 		InitializeComponent();
+        CourseId = courseId;
+        BindingContext = assessment;
 	}
-}
-public class BorderColorConverter : IValueConverter
-{
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+
+    public async void OnAssessmentClicked(object sender, EventArgs e)
     {
-        return (bool)value ? Color.FromRgba("#558F45") : Color.FromRgba("#808080");
-    }
-    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-    {
-        return null;
-    }
-}
-public class BorderBackgroundColorConverter : IValueConverter
-{
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-    {
-        return (bool)value ? Color.FromRgba("#558F45") : Color.FromRgba("#FFFFFF");
-    }
-    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-    {
-        return null;
-    }
-}
-public class LabelTextConverter : IValueConverter
-{
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-    {
-        return (AssessmentType)value == AssessmentType.Performance ? "P" : "O";
-    }
-    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-    {
-        return null;
-    }
-}
-public class LabelColorConverter : IValueConverter
-{
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-    {
-        return (bool)value ? Color.FromRgba("#FFFFFF") : Color.FromRgba("#000000");
-    }
-    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-    {
-        return null;
+        int assessmentIdParsed = int.Parse(assessmentId.Text);
+        AssessmentType assessmentTypeParsed = assessmentType.Text == "Performance" ? AssessmentType.Performance : AssessmentType.Objective;
+        if (assessmentIdParsed == 0) await Navigation.PushModalAsync(new AddAssessmentModal(assessmentTypeParsed, CourseId));
+        else await Navigation.PushModalAsync(new EditAssessmentModal(assessmentIdParsed));
     }
 }

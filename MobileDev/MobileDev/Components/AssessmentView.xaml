@@ -3,18 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MobileDev.Components"
              x:Class="MobileDev.Components.AssessmentView">
-    <Border StrokeShape="Ellipse"
-            WidthRequest="25"
-            HeightRequest="25"
-            Margin="0, 0, 5, 0"
-            Stroke="{Binding Completed,
-                     Converter={local:BorderColorConverter}}"
-            BackgroundColor="{Binding Completed,
-                     Converter={local:BorderBackgroundColorConverter}}">
-        <Label HorizontalOptions="Center" VerticalOptions="Center"
-               Text="{Binding Type,
-                      Converter={local:LabelTextConverter}}"
-               TextColor="{Binding Completed,
-                      Converter={local:LabelColorConverter}}" />
+    <Border Stroke="{StaticResource WGULightBlue}"
+                                    StrokeThickness="0.5"
+                                    StrokeShape="RoundRectangle 5, 5, 5, 5"
+                                    Margin="0, 0, 0, 10"
+                                    BackgroundColor="White">
+        <Border.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnAssessmentClicked" />
+        </Border.GestureRecognizers>
+        <HorizontalStackLayout>
+            <Label Text="{Binding Id}" x:Name="assessmentId" IsVisible="false" />
+            <Label Text="{Binding Type}" x:Name="assessmentType" IsVisible="false" />
+            <local:AssessmentIcon />
+            <VerticalStackLayout>
+                <Label Text="{Binding Name}" 
+                                               TextColor="Black" />
+                <Label Text="{Binding Date,
+                                               StringFormat='{0:MM}/{0:dd}/{0:yy}'}"
+                                               TextColor="Black" />
+            </VerticalStackLayout>
+        </HorizontalStackLayout>
     </Border>
 </ContentView>

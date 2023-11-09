@@ -28,35 +28,12 @@
                     <Image Source="wgulogo.png" WidthRequest="150" 
                            HorizontalOptions="Start"
                            Margin="10" />
-                    <Label Text="Adding a New Assessment" />
+                    <Label x:Name="modalTitle" />
                     <Border>
                         <HorizontalStackLayout>
                             <Label Text="Assessment Name" />
                             <Border BackgroundColor="{StaticResource WGUDarkBlue}">
                                 <Entry WidthRequest="200" x:Name="assessmentName" />
-                            </Border>
-                        </HorizontalStackLayout>
-                    </Border>
-                    <Border>
-                        <HorizontalStackLayout>
-                            <Label Text="Course Association" />
-                            <Border BackgroundColor="{StaticResource WGUDarkBlue}">
-                                <Picker x:Name="course" />
-                            </Border>
-                        </HorizontalStackLayout>
-                    </Border>
-                    <Border>
-                        <HorizontalStackLayout>
-                            <Label Text="Assessment Type" />
-                            <Border BackgroundColor="{StaticResource WGUDarkBlue}">
-                                <Picker x:Name="assessmentType">
-                                    <Picker.ItemsSource>
-                                        <x:Array Type="{x:Type x:String}">
-                                            <x:String>Objective Assessment</x:String>
-                                            <x:String>Performance Assessment</x:String>
-                                        </x:Array>
-                                    </Picker.ItemsSource>
-                                </Picker>
                             </Border>
                         </HorizontalStackLayout>
                     </Border>

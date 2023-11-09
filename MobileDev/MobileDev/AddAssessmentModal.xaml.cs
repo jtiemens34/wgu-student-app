@@ -2,18 +2,20 @@ namespace MobileDev;
 
 public partial class AddAssessmentModal : ContentPage
 {
-	public AddAssessmentModal()
+    private AssessmentType AssessmentType;
+    private int CourseId;
+	public AddAssessmentModal(AssessmentType assessmentType, int courseId)
 	{
 		InitializeComponent();
+        AssessmentType = assessmentType;
+        CourseId = courseId;
 	}
     public async void OnLoad(object sender, EventArgs e)
     {
-        Binding binding = new()
-        {
-            Source = await App.DbHandler.GetAllCoursesAsync()
-        };
-        course.SetBinding(Picker.ItemsSourceProperty, binding);
-        course.ItemDisplayBinding = new Binding("Name");
+        Course course = await App.DbHandler.GetCourseAsync(CourseId);
+        string courseName = course.Name;
+        string assessmentType = this.AssessmentType == AssessmentType.Objective ? "n Objective" : " Performance";
+        modalTitle.Text = "Adding a" + assessmentType + " assessment to " + courseName;
     }
     public async void OnCancelClicked(object sender, EventArgs e)
 	{
@@ -27,13 +29,12 @@ public partial class AddAssessmentModal : ContentPage
             await this.DisplayAlert("Error", "Assessment Name can not be empty!", "OK");
             return;
         }
-        Course selectedCourse = (Course)course.SelectedItem;
         Assessment addAssessment = new()
         {
             Name = assessmentName.Text,
-            CourseId = selectedCourse.Id,
+            CourseId = CourseId,
             Completed = completed.IsChecked,
-            Type = (AssessmentType)assessmentType.SelectedIndex,
+            Type = AssessmentType,
             Date = scheduledDate.Date
         };
         await App.DbHandler.SaveAssessmentAsync(addAssessment);

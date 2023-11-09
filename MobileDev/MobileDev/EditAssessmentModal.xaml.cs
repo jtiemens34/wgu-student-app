@@ -14,18 +14,12 @@ public partial class EditAssessmentModal : ContentPage
         // Populate default values
         Assessment = await App.DbHandler.GetAssessmentAsync(AssessmentId);
         assessmentName.Text = Assessment.Name;
-        assessmentType.SelectedIndex = (int)Assessment.Type;
         scheduledDate.Date = Assessment.Date;
-
-        // Populate Course picker
-        Binding binding = new()
-        {
-            Source = await App.DbHandler.GetAllCoursesAsync()
-        };
-        course.SetBinding(Picker.ItemsSourceProperty, binding);
-        course.ItemDisplayBinding = new Binding("Name");
-
-        course.SelectedIndex = Assessment.CourseId;
+        // Populate 
+        Course course = await App.DbHandler.GetCourseAsync(Assessment.CourseId);
+        string courseName = course.Name;
+        string assessmentType = Assessment.Type == AssessmentType.Objective ? "Objective" : "Performance";
+        modalTitle.Text = "Editing " + courseName + "'s " + assessmentType + " Assessment";
     }
     public async void OnCancelClicked(object sender, EventArgs e)
 	{
@@ -39,12 +33,9 @@ public partial class EditAssessmentModal : ContentPage
             await this.DisplayAlert("Error", "Course Name can not be empty!", "OK");
             return;
         }
-        Course selectedCourse = (Course)course.SelectedItem;
         Assessment.Name = assessmentName.Text;
-        Assessment.CourseId = selectedCourse.Id;
         Assessment.Date = scheduledDate.Date;
         Assessment.Completed = completed.IsChecked;
-        Assessment.Type = (AssessmentType)assessmentType.SelectedIndex;
         await App.DbHandler.SaveAssessmentAsync(Assessment);
         await Navigation.PopModalAsync();
 	}
