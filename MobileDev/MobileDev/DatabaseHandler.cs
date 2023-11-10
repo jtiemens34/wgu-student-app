@@ -148,12 +148,12 @@ namespace MobileDev
         public async Task<Assessment> GetObjectiveAssessmentAsync(int id)
         {
             await Init();
-            return await _db.Table<Assessment>().Where(i => i.Id == id && i.Type == AssessmentType.Objective).FirstOrDefaultAsync();
+            return await _db.Table<Assessment>().Where(i => i.CourseId == id && i.Type == AssessmentType.Objective).FirstOrDefaultAsync();
         }
         public async Task<Assessment> GetPerformanceAssessmentAsync(int id)
         {
             await Init();
-            return await _db.Table<Assessment>().Where(i => i.Id == id && i.Type == AssessmentType.Performance).FirstOrDefaultAsync();
+            return await _db.Table<Assessment>().Where(i => i.CourseId == id && i.Type == AssessmentType.Performance).FirstOrDefaultAsync();
         }
         public async Task<int> DeleteAssessmentAsync(Assessment assessment)
         {
