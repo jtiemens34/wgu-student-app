@@ -24,14 +24,15 @@ public partial class EditCourseModal : ContentPage
         notes.Text = Course.Notes;
 
         // Populate Term picker
+        List<Term> terms = await App.DbHandler.GetAllTermsAsync();
         Binding binding = new()
         {
-            Source = await App.DbHandler.GetAllTermsAsync()
+            Source = terms
         };
         term.SetBinding(Picker.ItemsSourceProperty, binding);
         term.ItemDisplayBinding = new Binding("Name");
 
-        term.SelectedIndex = Course.TermId;
+        term.SelectedIndex = terms.FindIndex(o => o.Id ==  Course.TermId);
     }
     public async void OnShareClicked(object sender, EventArgs e)
     {
