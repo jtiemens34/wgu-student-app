@@ -4,23 +4,23 @@
              xmlns:local="clr-namespace:MobileDev.Components"
              x:Class="MobileDev.Components.AssessmentView">
     <Border Stroke="{StaticResource WGULightBlue}"
-                                    StrokeThickness="0.5"
-                                    StrokeShape="RoundRectangle 5, 5, 5, 5"
-                                    Margin="0, 0, 0, 10"
-                                    BackgroundColor="White">
+            StrokeThickness="0.5"
+            StrokeShape="RoundRectangle 5, 5, 5, 5"
+            Margin="0, 0, 0, 10"
+            BackgroundColor="White">
         <Border.GestureRecognizers>
             <TapGestureRecognizer Tapped="OnAssessmentClicked" />
         </Border.GestureRecognizers>
         <HorizontalStackLayout>
             <Label Text="{Binding Id}" x:Name="assessmentId" IsVisible="false" />
             <Label Text="{Binding Type}" x:Name="assessmentType" IsVisible="false" />
-            <local:AssessmentIcon />
+            <local:AssessmentIcon Margin="5" />
             <VerticalStackLayout>
                 <Label Text="{Binding Name}" 
-                                               TextColor="Black" />
+                       TextColor="Black" />
                 <Label Text="{Binding Date,
-                                               StringFormat='{0:MM}/{0:dd}/{0:yy}'}"
-                                               TextColor="Black" />
+                              StringFormat='{0:MM}/{0:dd}/{0:yy}'}"
+                       TextColor="Black" />
             </VerticalStackLayout>
         </HorizontalStackLayout>
     </Border>
