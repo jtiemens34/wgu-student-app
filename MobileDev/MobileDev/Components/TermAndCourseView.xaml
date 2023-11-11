@@ -28,6 +28,18 @@
                            HorizontalOptions="Center"
                            Margin="0, 0, 10, 0" />
                 </HorizontalStackLayout>
+                <VerticalStackLayout Grid.Column="2" HorizontalOptions="EndAndExpand">
+                    <HorizontalStackLayout>
+                        <Label Text="{Binding StartDate,
+                                      StringFormat='{0:MM}/{0:dd}/{0:yy}'}"
+                               TextColor="White" />
+                        <Label Text="-"
+                               TextColor="White" />
+                    </HorizontalStackLayout>
+                    <Label Text="{Binding EndDate,
+                                  StringFormat='{0:MM}/{0:dd}/{0:yy}'}"
+                           TextColor="White" />
+                </VerticalStackLayout>
             </Grid>
         </Border>
         <VerticalStackLayout x:Name="courseList">

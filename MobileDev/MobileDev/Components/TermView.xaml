@@ -25,8 +25,11 @@
                                    HorizontalOptions="EndAndExpand"
                                    Margin="0, 0, 10, 0">
                 <VerticalStackLayout Margin="0, 0, 10, 0">
-                    <Label Text="{Binding StartDate, 
-                                  StringFormat='{0:MM}/{0:dd}/{0:yy}'}" />
+                    <HorizontalStackLayout>
+                        <Label Text="{Binding StartDate, 
+                                      StringFormat='{0:MM}/{0:dd}/{0:yy}'}" />
+                        <Label Text="-" />
+                    </HorizontalStackLayout>
                     <Label Text="{Binding EndDate, 
                                   StringFormat='{0:MM}/{0:dd}/{0:yy}'}" />
                 </VerticalStackLayout>
