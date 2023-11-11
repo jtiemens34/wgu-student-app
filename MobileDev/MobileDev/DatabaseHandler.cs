@@ -42,6 +42,19 @@ namespace MobileDev
         }
 
         #region Terms
+        public async Task DeleteAllTermsAsync()
+        {
+            try
+            {
+                await Init();
+                foreach (Term term in await _db.Table<Term>().ToListAsync())
+                    await DeleteTermAsync(term);
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = ex.Message;
+            }
+        }
         public async Task<List<Term>> GetAllTermsAsync()
         {
             try
@@ -74,18 +87,18 @@ namespace MobileDev
         #endregion
 
         #region Courses
-        public async Task<List<Course>> GetAllCoursesAsync()
+        public async Task DeleteAllCoursesAsync()
         {
             try
             {
                 await Init();
-                return await _db.Table<Course>().ToListAsync();
+                foreach (Course course in await _db.Table<Course>().ToListAsync())
+                    await DeleteCourseAsync(course);
             }
             catch (Exception ex)
             {
                 StatusMessage = ex.Message;
             }
-            return new List<Course>();
         }
         public async Task<List<Course>> GetAllCoursesFromTermAsync(Term term)
         {
@@ -121,6 +134,19 @@ namespace MobileDev
         #endregion
 
         #region Assessments
+        public async Task DeleteAllAssessmentsAsync()
+        {
+            try
+            {
+                await Init();
+                foreach (Assessment assessment in await _db.Table<Assessment>().ToListAsync())
+                    await DeleteAssessmentAsync(assessment);
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = ex.Message;
+            }
+        }
         public async Task<List<Assessment>> GetAllAssessmentsFromCourseAsync(int courseId)
         {
             try

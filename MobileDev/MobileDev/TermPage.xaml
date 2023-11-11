@@ -22,6 +22,12 @@
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </VerticalStackLayout>
+            <Button HorizontalOptions="Start"
+                    VerticalOptions="EndAndExpand"
+                    Text="Evaluation Test"
+                    Clicked="OnEvaluationClicked"
+                    BackgroundColor="{StaticResource WGUDarkBlue}"
+                    TextColor="White" />
             <Border HorizontalOptions="EndAndExpand" 
                     VerticalOptions="EndAndExpand"
                     HeightRequest="80"
