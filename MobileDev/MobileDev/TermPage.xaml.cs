@@ -58,7 +58,8 @@ public partial class TermPage : ContentPage
 			Name = "Mobile App Dev PA",
 			Date = DateTime.Now.AddMonths(1),
 			Type = AssessmentType.Performance,
-			Completed = false
+			Completed = false,
+			NotificationEnabled = false
 		};
         await App.DbHandler.SaveAssessmentAsync(performanceAssessment);
         Assessment objectiveAssessment = new()
@@ -67,7 +68,8 @@ public partial class TermPage : ContentPage
             Name = "Mobile App Dev OA",
             Date = DateTime.Now.AddMonths(1),
             Type = AssessmentType.Objective,
-            Completed = false
+            Completed = false,
+            NotificationEnabled = false
         };
 		await App.DbHandler.SaveAssessmentAsync(objectiveAssessment);
 
