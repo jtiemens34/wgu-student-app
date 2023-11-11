@@ -30,5 +30,8 @@ namespace MobileDev
         public AssessmentType Type { get; set;}
         [Column("date")]
         public DateTime Date { get; set; }
+
+        [Column("notification_enabled")]
+        public bool NotificationEnabled { get; set; }
     }
 }
