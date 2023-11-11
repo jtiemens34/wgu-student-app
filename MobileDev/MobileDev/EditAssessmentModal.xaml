@@ -47,8 +47,22 @@
                     </Border>
                     <Border>
                         <HorizontalStackLayout>
-                            <Label Text="Completed" />
+                            <Label Text="Completed?" />
                             <CheckBox x:Name="completed" />
+                        </HorizontalStackLayout>
+                    </Border>
+                    <Border>
+                        <HorizontalStackLayout>
+                            <Label Text="Notify?" />
+                            <CheckBox x:Name="notify" CheckedChanged="OnNotifyChecked" />
+                        </HorizontalStackLayout>
+                    </Border>
+                    <Border x:Name="timeDisplay" IsVisible="false">
+                        <HorizontalStackLayout>
+                            <Label Text="Time" />
+                            <Border BackgroundColor="{StaticResource WGUDarkBlue}">
+                                <TimePicker x:Name="time" />
+                            </Border>
                         </HorizontalStackLayout>
                     </Border>
                     <HorizontalStackLayout HorizontalOptions="Fill">

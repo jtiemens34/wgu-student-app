@@ -1,3 +1,5 @@
+using Plugin.LocalNotification;
+
 namespace MobileDev;
 
 public partial class AddAssessmentModal : ContentPage
@@ -22,22 +24,39 @@ public partial class AddAssessmentModal : ContentPage
         bool acceptDialog = await this.DisplayAlert("Are you sure you want to leave?", "Your changes will not be saved!", "Yes", "No");
         if (acceptDialog) await Navigation.PopModalAsync();
 	}
-	public async void OnSaveClicked(object sender, EventArgs e)
+    public async void OnNotifyChecked(object sender, EventArgs e)
+    {
+        if (DeviceInfo.Current.Platform == DevicePlatform.WinUI && notify.IsChecked)
+        {
+            await this.DisplayAlert("Unsupported Platform", "Notifications not supported on Windows!", "OK");
+            notify.IsChecked = false;
+            return;
+        }
+        timeDisplay.IsVisible = notify.IsChecked;
+    }
+    public async void OnSaveClicked(object sender, EventArgs e)
 	{
         if (String.IsNullOrEmpty(assessmentName.Text))
         {
             await this.DisplayAlert("Error", "Assessment Name can not be empty!", "OK");
             return;
         }
+        DateTime date = scheduledDate.Date;
+        if (notify.IsChecked) date = date.Add(time.Time);
         Assessment addAssessment = new()
         {
             Name = assessmentName.Text,
             CourseId = CourseId,
             Completed = completed.IsChecked,
             Type = AssessmentType,
-            Date = scheduledDate.Date
+            Date = date,
+            NotificationEnabled = notify.IsChecked
         };
         await App.DbHandler.SaveAssessmentAsync(addAssessment);
+
+        if (DeviceInfo.Current.Platform != DevicePlatform.WinUI)
+            await addAssessment.AddNotification();
+
         await Navigation.PopModalAsync();
 	}
 }

@@ -15,6 +15,13 @@ public partial class EditAssessmentModal : ContentPage
         Assessment = await App.DbHandler.GetAssessmentAsync(AssessmentId);
         assessmentName.Text = Assessment.Name;
         scheduledDate.Date = Assessment.Date;
+        completed.IsChecked = Assessment.Completed;
+        notify.IsChecked = Assessment.NotificationEnabled;
+        if (Assessment.NotificationEnabled)
+        {
+            timeDisplay.IsVisible = true;
+            time.Time = Assessment.Date.TimeOfDay;
+        }
         // Populate 
         Course course = await App.DbHandler.GetCourseAsync(Assessment.CourseId);
         string courseName = course.Name;
@@ -26,6 +33,16 @@ public partial class EditAssessmentModal : ContentPage
         bool acceptDialog = await this.DisplayAlert("Are you sure you want to leave?", "Your changes will not be saved!", "Yes", "No");
         if (acceptDialog) await Navigation.PopModalAsync();
 	}
+    public async void OnNotifyChecked(object sender, EventArgs e)
+    {
+        if (DeviceInfo.Current.Platform == DevicePlatform.WinUI && notify.IsChecked)
+        {
+            await this.DisplayAlert("Unsupported Platform", "Notifications not supported on Windows!", "OK");
+            notify.IsChecked = false;
+            return;
+        }
+        timeDisplay.IsVisible = notify.IsChecked;
+    }
 	public async void OnSaveClicked(object sender, EventArgs e)
 	{
         if (String.IsNullOrEmpty(assessmentName.Text))
@@ -34,8 +51,13 @@ public partial class EditAssessmentModal : ContentPage
             return;
         }
         Assessment.Name = assessmentName.Text;
-        Assessment.Date = scheduledDate.Date;
+
+        DateTime scheduledTime = scheduledDate.Date;
+        if (notify.IsChecked) scheduledTime.Add(time.Time);
+        Assessment.Date = scheduledTime;
+
         Assessment.Completed = completed.IsChecked;
+        Assessment.NotificationEnabled = notify.IsChecked;
         await App.DbHandler.SaveAssessmentAsync(Assessment);
         await Navigation.PopModalAsync();
 	}

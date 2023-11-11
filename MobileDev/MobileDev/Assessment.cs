@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using Plugin.LocalNotification;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,5 +34,27 @@ namespace MobileDev
 
         [Column("notification_enabled")]
         public bool NotificationEnabled { get; set; }
+
+        public async Task AddNotification()
+        {
+            if (!NotificationEnabled) return;
+            if (DeviceInfo.Current.Platform != DevicePlatform.WinUI)
+            {
+                if (await LocalNotificationCenter.Current.AreNotificationsEnabled() == false)
+                    await LocalNotificationCenter.Current.RequestNotificationPermission();
+                var notification = new NotificationRequest
+                {
+                    NotificationId = CourseId,
+                    Title = Name + " upcoming!",
+                    Description = Name + " is happening soon!",
+                    ReturningData = "Dummy data",
+                    Schedule =
+                    {
+                        NotifyTime = Date
+                    }
+                };
+                await LocalNotificationCenter.Current.Show(notification);
+            }
+        }
     }
 }

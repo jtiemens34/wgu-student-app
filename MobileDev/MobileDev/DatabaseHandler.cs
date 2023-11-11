@@ -160,6 +160,19 @@ namespace MobileDev
             await Init();
             return await _db.DeleteAsync(assessment);
         }
+        public async Task<List<Assessment>> GetAllNotifiedAssessmentsAsync()
+        {
+            try
+            {
+                await Init();
+                return await _db.Table<Assessment>().Where(o => o.NotificationEnabled == true).ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = ex.Message;
+            }
+            return new List<Assessment>();
+        }
         #endregion
     }
 }

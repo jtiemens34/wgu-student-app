@@ -1,4 +1,7 @@
-﻿namespace MobileDev;
+﻿using Plugin.LocalNotification;
+using Plugin.LocalNotification.EventArgs;
+
+namespace MobileDev;
 
 public partial class App : Application
 {
