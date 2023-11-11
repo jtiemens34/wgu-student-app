@@ -2,7 +2,7 @@ namespace MobileDev.Components;
 
 public partial class AssessmentView : ContentView
 {
-    private int CourseId;
+    private readonly int CourseId;
 	public AssessmentView(int courseId, Assessment assessment)
 	{
 		InitializeComponent();

@@ -2,8 +2,8 @@ namespace MobileDev;
 
 public partial class AddAssessmentModal : ContentPage
 {
-    private AssessmentType AssessmentType;
-    private int CourseId;
+    private readonly AssessmentType AssessmentType;
+    private readonly int CourseId;
 	public AddAssessmentModal(AssessmentType assessmentType, int courseId)
 	{
 		InitializeComponent();
