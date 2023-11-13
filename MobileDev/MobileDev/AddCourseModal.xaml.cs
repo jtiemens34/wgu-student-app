@@ -28,6 +28,26 @@ public partial class AddCourseModal : ContentPage
             Title = "Share Notes"
         });
     }
+    public async void OnStartNotifyChecked(object sender, EventArgs e)
+    {
+        if (DeviceInfo.Current.Platform == DevicePlatform.WinUI && startNotify.IsChecked)
+        {
+            await this.DisplayAlert("Unsupported Platform", "Notifications not supported on Windows!", "OK");
+            startNotify.IsChecked = false;
+            return;
+        }
+        startTimeDisplay.IsVisible = startNotify.IsChecked;
+    }
+    public async void OnEndNotifyChecked(object sender, EventArgs e)
+    {
+        if (DeviceInfo.Current.Platform == DevicePlatform.WinUI && endNotify.IsChecked)
+        {
+            await this.DisplayAlert("Unsupported Platform", "Notifications not supported on Windows!", "OK");
+            endNotify.IsChecked = false;
+            return;
+        }
+        endTimeDisplay.IsVisible = endNotify.IsChecked;
+    }
     public async void OnCancelClicked(object sender, EventArgs e)
 	{
         bool acceptDialog = await this.DisplayAlert("Are you sure you want to leave?", "Your changes will not be saved!", "Yes", "No");
@@ -41,14 +61,20 @@ public partial class AddCourseModal : ContentPage
         if (String.IsNullOrEmpty(instructorEmail.Text)) await this.DisplayAlert("Error", "Instructor Email can not be empty!", "OK");
         if (courseName.Text == null || instructorName.Text == null || instructorPhone.Text == null || instructorEmail.Text == null) return;
         Term selectedTerm = (Term)term.SelectedItem;
+        DateTime startDateTime = startDate.Date;
+        if (startNotify.IsChecked) startDateTime = startDateTime.Add(startTime.Time);
+        DateTime endDateTime = endDate.Date;
+        if (endNotify.IsChecked) endDateTime = endDateTime.Add(endTime.Time);
         Course addCourse = new()
         {
             CourseStatus = (CourseStatus)courseStatus.SelectedIndex,
             Name = courseName.Text,
             TermId = selectedTerm.Id,
             Credits = (int)credits.Value,
-            StartDate = startDate.Date,
-            EndDate = endDate.Date,
+            StartDate = startDateTime.Date,
+            EndDate = endDateTime.Date,
+            StartNotificationEnabled = startNotify.IsChecked,
+            EndNotificationEnabled = endNotify.IsChecked,
             InstructorName = instructorName.Text,
             InstructorPhone = instructorPhone.Text,
             InstructorEmail = instructorEmail.Text,

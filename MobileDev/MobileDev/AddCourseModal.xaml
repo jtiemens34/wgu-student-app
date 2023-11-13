@@ -77,20 +77,44 @@
                         </HorizontalStackLayout>
                     </Border>
                     <Border>
-                        <HorizontalStackLayout>
-                            <Label Text="Start Date" />
-                            <Border BackgroundColor="{StaticResource WGUDarkBlue}">
-                                <DatePicker x:Name="startDate" />
-                            </Border>
-                        </HorizontalStackLayout>
+                        <VerticalStackLayout>
+                            <HorizontalStackLayout>
+                                <Label Text="Start Date" />
+                                <Border BackgroundColor="{StaticResource WGUDarkBlue}">
+                                    <DatePicker x:Name="startDate" />
+                                </Border>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout>
+                                <Label Text="Notify?" />
+                                <CheckBox x:Name="startNotify" CheckedChanged="OnStartNotifyChecked" />
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout x:Name="startTimeDisplay">
+                                <Label Text="Time" />
+                                <Border BackgroundColor="{StaticResource WGUDarkBlue}">
+                                    <TimePicker x:Name="startTime" />
+                                </Border>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
                     </Border>
                     <Border>
-                        <HorizontalStackLayout>
-                            <Label Text="End Date" />
-                            <Border BackgroundColor="{StaticResource WGUDarkBlue}">
-                                <DatePicker x:Name="endDate" />
-                            </Border>
-                        </HorizontalStackLayout>
+                        <VerticalStackLayout>
+                            <HorizontalStackLayout>
+                                <Label Text="End Date" />
+                                <Border BackgroundColor="{StaticResource WGUDarkBlue}">
+                                    <DatePicker x:Name="endDate" />
+                                </Border>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout>
+                                <Label Text="Notify?" />
+                                <CheckBox x:Name="endNotify" CheckedChanged="OnEndNotifyChecked" />
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout x:Name="endTimeDisplay">
+                                <Label Text="Time" />
+                                <Border BackgroundColor="{StaticResource WGUDarkBlue}">
+                                    <TimePicker x:Name="endTime" />
+                                </Border>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
                     </Border>
                     <Border>
                         <HorizontalStackLayout>

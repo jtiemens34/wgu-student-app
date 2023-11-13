@@ -18,6 +18,18 @@ public partial class EditCourseModal : ContentPage
         courseStatus.SelectedIndex = (int)Course.CourseStatus;
         startDate.Date = Course.StartDate;
         endDate.Date = Course.EndDate;
+        startNotify.IsChecked = Course.StartNotificationEnabled;
+        endNotify.IsChecked = Course.EndNotificationEnabled;
+        if (Course.StartNotificationEnabled)
+        {
+            startTimeDisplay.IsVisible = true;
+            startTime.Time = Course.StartDate.TimeOfDay;
+        }
+        if (Course.EndNotificationEnabled)
+        {
+            endTimeDisplay.IsVisible = true;
+            endTime.Time = Course.EndDate.TimeOfDay;
+        }
         instructorName.Text = Course.InstructorName;
         instructorPhone.Text = Course.InstructorPhone;
         instructorEmail.Text = Course.InstructorEmail;
@@ -33,6 +45,26 @@ public partial class EditCourseModal : ContentPage
         term.ItemDisplayBinding = new Binding("Name");
 
         term.SelectedIndex = terms.FindIndex(o => o.Id ==  Course.TermId);
+    }
+    public async void OnStartNotifyChecked(object sender, EventArgs e)
+    {
+        if (DeviceInfo.Current.Platform == DevicePlatform.WinUI && startNotify.IsChecked)
+        {
+            await this.DisplayAlert("Unsupported Platform", "Notifications not supported on Windows!", "OK");
+            startNotify.IsChecked = false;
+            return;
+        }
+        startTimeDisplay.IsVisible = startNotify.IsChecked;
+    }
+    public async void OnEndNotifyChecked(object sender, EventArgs e)
+    {
+        if (DeviceInfo.Current.Platform == DevicePlatform.WinUI && endNotify.IsChecked)
+        {
+            await this.DisplayAlert("Unsupported Platform", "Notifications not supported on Windows!", "OK");
+            endNotify.IsChecked = false;
+            return;
+        }
+        endTimeDisplay.IsVisible = endNotify.IsChecked;
     }
     public async void OnShareClicked(object sender, EventArgs e)
     {
@@ -61,12 +93,23 @@ public partial class EditCourseModal : ContentPage
         if (String.IsNullOrEmpty(courseName.Text ) || String.IsNullOrEmpty(instructorName.Text) 
             || String.IsNullOrEmpty(instructorPhone.Text) || String.IsNullOrEmpty(instructorEmail.Text)) return;
         Term selectedTerm = (Term)term.SelectedItem;
+
+        DateTime startDateTime = startDate.Date;
+        if (startNotify.IsChecked) startDateTime = startDateTime.Add(startTime.Time);
+        Course.StartDate = startDateTime;
+
+        DateTime endDateTime = endDate.Date;
+        if (endNotify.IsChecked) endDateTime = endDateTime.Add(endTime.Time);
+        Course.EndDate = endDateTime;
+
         Course.Name = courseName.Text;
         Course.TermId = selectedTerm.Id;
         Course.Credits = (int)credits.Value;
         Course.CourseStatus = (CourseStatus)courseStatus.SelectedIndex;
-        Course.StartDate = startDate.Date;
-        Course.EndDate = endDate.Date;
+        Course.StartDate = startDateTime.Date;
+        Course.EndDate = endDateTime.Date;
+        Course.StartNotificationEnabled = startNotify.IsChecked;
+        Course.EndNotificationEnabled = endNotify.IsChecked;
         Course.InstructorName = instructorName.Text;
         Course.InstructorPhone = instructorPhone.Text;
         Course.InstructorEmail = instructorEmail.Text;
