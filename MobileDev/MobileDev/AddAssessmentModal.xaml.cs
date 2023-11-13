@@ -24,15 +24,25 @@ public partial class AddAssessmentModal : ContentPage
         bool acceptDialog = await this.DisplayAlert("Are you sure you want to leave?", "Your changes will not be saved!", "Yes", "No");
         if (acceptDialog) await Navigation.PopModalAsync();
 	}
-    public async void OnNotifyChecked(object sender, EventArgs e)
+    public async void OnStartNotifyChecked(object sender, EventArgs e)
     {
-        if (DeviceInfo.Current.Platform == DevicePlatform.WinUI && notify.IsChecked)
+        if (DeviceInfo.Current.Platform == DevicePlatform.WinUI && startNotify.IsChecked)
         {
             await this.DisplayAlert("Unsupported Platform", "Notifications not supported on Windows!", "OK");
-            notify.IsChecked = false;
+            startNotify.IsChecked = false;
             return;
         }
-        timeDisplay.IsVisible = notify.IsChecked;
+        startTimeDisplay.IsVisible = startNotify.IsChecked;
+    }
+    public async void OnEndNotifyChecked(object sender, EventArgs e)
+    {
+        if (DeviceInfo.Current.Platform == DevicePlatform.WinUI && endNotify.IsChecked)
+        {
+            await this.DisplayAlert("Unsupported Platform", "Notifications not supported on Windows!", "OK");
+            endNotify.IsChecked = false;
+            return;
+        }
+        endTimeDisplay.IsVisible = endNotify.IsChecked;
     }
     public async void OnSaveClicked(object sender, EventArgs e)
 	{
@@ -41,16 +51,20 @@ public partial class AddAssessmentModal : ContentPage
             await this.DisplayAlert("Error", "Assessment Name can not be empty!", "OK");
             return;
         }
-        DateTime date = scheduledDate.Date;
-        if (notify.IsChecked) date = date.Add(time.Time);
+        DateTime startDateTime = startDate.Date;
+        if (startNotify.IsChecked) startDateTime = startDateTime.Add(startTime.Time);
+        DateTime endDateTime = endDate.Date;
+        if (endNotify.IsChecked) endDateTime = endDateTime.Add(endTime.Time);
         Assessment addAssessment = new()
         {
             Name = assessmentName.Text,
             CourseId = CourseId,
             Completed = completed.IsChecked,
             Type = AssessmentType,
-            Date = date,
-            NotificationEnabled = notify.IsChecked
+            StartDate = startDateTime,
+            EndDate = endDateTime,
+            StartNotificationEnabled = startNotify.IsChecked,
+            EndNotificationEnabled = endNotify.IsChecked
         };
         await App.DbHandler.SaveAssessmentAsync(addAssessment);
 

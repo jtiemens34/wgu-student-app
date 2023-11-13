@@ -14,6 +14,8 @@ public partial class AppShell : Shell
         {
             foreach (Assessment assessment in await App.DbHandler.GetAllNotifiedAssessmentsAsync())
                 await assessment.AddNotification();
+            foreach (Course course in await App.DbHandler.GetAllNotifiedCoursesAsync())
+                await course.AddNotification();
         }
     }
 }

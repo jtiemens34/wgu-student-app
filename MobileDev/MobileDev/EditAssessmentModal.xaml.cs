@@ -14,13 +14,19 @@ public partial class EditAssessmentModal : ContentPage
         // Populate default values
         Assessment = await App.DbHandler.GetAssessmentAsync(AssessmentId);
         assessmentName.Text = Assessment.Name;
-        scheduledDate.Date = Assessment.Date;
+        startDate.Date = Assessment.StartDate;
         completed.IsChecked = Assessment.Completed;
-        notify.IsChecked = Assessment.NotificationEnabled;
-        if (Assessment.NotificationEnabled)
+        startNotify.IsChecked = Assessment.StartNotificationEnabled;
+        endNotify.IsChecked = Assessment.EndNotificationEnabled;
+        if (Assessment.StartNotificationEnabled)
         {
-            timeDisplay.IsVisible = true;
-            time.Time = Assessment.Date.TimeOfDay;
+            startTimeDisplay.IsVisible = true;
+            startTime.Time = Assessment.StartDate.TimeOfDay;
+        }
+        if (Assessment.EndNotificationEnabled)
+        {
+            endTimeDisplay.IsVisible = true;
+            endTime.Time = Assessment.EndDate.TimeOfDay;
         }
         // Populate 
         Course course = await App.DbHandler.GetCourseAsync(Assessment.CourseId);
@@ -33,17 +39,27 @@ public partial class EditAssessmentModal : ContentPage
         bool acceptDialog = await this.DisplayAlert("Are you sure you want to leave?", "Your changes will not be saved!", "Yes", "No");
         if (acceptDialog) await Navigation.PopModalAsync();
 	}
-    public async void OnNotifyChecked(object sender, EventArgs e)
+    public async void OnStartNotifyChecked(object sender, EventArgs e)
     {
-        if (DeviceInfo.Current.Platform == DevicePlatform.WinUI && notify.IsChecked)
+        if (DeviceInfo.Current.Platform == DevicePlatform.WinUI && startNotify.IsChecked)
         {
             await this.DisplayAlert("Unsupported Platform", "Notifications not supported on Windows!", "OK");
-            notify.IsChecked = false;
+            startNotify.IsChecked = false;
             return;
         }
-        timeDisplay.IsVisible = notify.IsChecked;
+        startTimeDisplay.IsVisible = startNotify.IsChecked;
     }
-	public async void OnSaveClicked(object sender, EventArgs e)
+    public async void OnEndNotifyChecked(object sender, EventArgs e)
+    {
+        if (DeviceInfo.Current.Platform == DevicePlatform.WinUI && endNotify.IsChecked)
+        {
+            await this.DisplayAlert("Unsupported Platform", "Notifications not supported on Windows!", "OK");
+            endNotify.IsChecked = false;
+            return;
+        }
+        endTimeDisplay.IsVisible = endNotify.IsChecked;
+    }
+    public async void OnSaveClicked(object sender, EventArgs e)
 	{
         if (String.IsNullOrEmpty(assessmentName.Text))
         {
@@ -52,12 +68,17 @@ public partial class EditAssessmentModal : ContentPage
         }
         Assessment.Name = assessmentName.Text;
 
-        DateTime scheduledTime = scheduledDate.Date;
-        if (notify.IsChecked) scheduledTime.Add(time.Time);
-        Assessment.Date = scheduledTime;
+        DateTime startDateTime = startDate.Date;
+        if (startNotify.IsChecked) startDateTime = startDateTime.Add(startTime.Time);
+        Assessment.StartDate = startDateTime;
+
+        DateTime endDateTime = endDate.Date;
+        if (endNotify.IsChecked) endDateTime = endDateTime.Add(endTime.Time);
+        Assessment.EndDate = endDateTime;
 
         Assessment.Completed = completed.IsChecked;
-        Assessment.NotificationEnabled = notify.IsChecked;
+        Assessment.StartNotificationEnabled = startNotify.IsChecked;
+        Assessment.EndNotificationEnabled = endNotify.IsChecked;
         await App.DbHandler.SaveAssessmentAsync(Assessment);
         await Navigation.PopModalAsync();
 	}

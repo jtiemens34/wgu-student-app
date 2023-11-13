@@ -131,6 +131,19 @@ namespace MobileDev
             await Init();
             return await _db.DeleteAsync(course);
         }
+        public async Task<List<Course>> GetAllNotifiedCoursesAsync()
+        {
+            try
+            {
+                await Init();
+                return await _db.Table<Course>().Where(o => o.NotificationEnabled == true).ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = ex.Message;
+            }
+            return new List<Course>();
+        }
         #endregion
 
         #region Assessments
