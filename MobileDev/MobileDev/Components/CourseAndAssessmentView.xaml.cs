@@ -21,14 +21,16 @@ public partial class CourseAndAssessmentView : ContentView
         performanceAssessment ??= new()
             {
                 Name = "No Performance Assessment",
-                Date = DateTime.Now,
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now.AddDays(7),
                 Type = AssessmentType.Performance,
                 Completed = false
             };
         objectiveAssessment ??= new()
             {
                 Name = "No Objective Assessment",
-                Date = DateTime.Now,
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now.AddDays(7),
                 Type = AssessmentType.Objective,
                 Completed = false
             };

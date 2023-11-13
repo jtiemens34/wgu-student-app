@@ -136,7 +136,7 @@ namespace MobileDev
             try
             {
                 await Init();
-                return await _db.Table<Course>().Where(o => o.NotificationEnabled == true).ToListAsync();
+                return await _db.Table<Course>().Where(o => (o.StartNotificationEnabled || o.EndNotificationEnabled)).ToListAsync();
             }
             catch (Exception ex)
             {
@@ -204,7 +204,7 @@ namespace MobileDev
             try
             {
                 await Init();
-                return await _db.Table<Assessment>().Where(o => o.NotificationEnabled == true).ToListAsync();
+                return await _db.Table<Assessment>().Where(o => (o.StartNotificationEnabled || o.EndNotificationEnabled)).ToListAsync();
             }
             catch (Exception ex)
             {

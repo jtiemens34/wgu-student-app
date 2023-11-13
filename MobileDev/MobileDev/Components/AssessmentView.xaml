@@ -18,9 +18,15 @@
             <VerticalStackLayout>
                 <Label Text="{Binding Name}" 
                        TextColor="Black" />
-                <Label Text="{Binding Date,
-                              StringFormat='{0:MM}/{0:dd}/{0:yy}'}"
-                       TextColor="Black" />
+                <HorizontalStackLayout>
+                    <Label Text="{Binding StartDate,
+                                  StringFormat='{0:MM}/{0:dd}/{0:yy}'}"
+                           TextColor="Black" />
+                    <Label Text="-" TextColor="Black" />
+                    <Label Text="{Binding EndDate,
+                                  StringFormat='{0:MM}/{0:dd}/{0:yy}'}"
+                           TextColor="Black" />
+                </HorizontalStackLayout>
             </VerticalStackLayout>
         </HorizontalStackLayout>
     </Border>

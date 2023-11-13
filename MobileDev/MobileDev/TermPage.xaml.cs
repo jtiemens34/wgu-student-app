@@ -56,20 +56,24 @@ public partial class TermPage : ContentPage
 		{
 			CourseId = course.Id,
 			Name = "Mobile App Dev PA",
-			Date = DateTime.Now.AddMonths(1),
+			StartDate = DateTime.Now.AddDays(7),
+			EndDate = DateTime.Now.AddDays(8),
 			Type = AssessmentType.Performance,
 			Completed = false,
-			NotificationEnabled = false
-		};
+			StartNotificationEnabled = false,
+            EndNotificationEnabled = false
+        };
         await App.DbHandler.SaveAssessmentAsync(performanceAssessment);
         Assessment objectiveAssessment = new()
         {
             CourseId = course.Id,
             Name = "Mobile App Dev OA",
-            Date = DateTime.Now.AddMonths(1),
+            StartDate = DateTime.Now.AddDays(14),
+			EndDate = DateTime.Now.AddDays(15),
             Type = AssessmentType.Objective,
             Completed = false,
-            NotificationEnabled = false
+            StartNotificationEnabled = false,
+            EndNotificationEnabled = false
         };
 		await App.DbHandler.SaveAssessmentAsync(objectiveAssessment);
 

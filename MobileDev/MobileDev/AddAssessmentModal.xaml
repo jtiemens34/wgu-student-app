@@ -49,7 +49,7 @@
                                 <Label Text="Notify?" />
                                 <CheckBox x:Name="startNotify" CheckedChanged="OnStartNotifyChecked" />
                             </HorizontalStackLayout>
-                            <HorizontalStackLayout x:Name="startTimeDisplay">
+                            <HorizontalStackLayout x:Name="startTimeDisplay" IsVisible="false">
                                 <Label Text="Time" />
                                 <Border BackgroundColor="{StaticResource WGUDarkBlue}">
                                     <TimePicker x:Name="startTime" />
@@ -69,7 +69,7 @@
                                 <Label Text="Notify?" />
                                 <CheckBox x:Name="endNotify" CheckedChanged="OnEndNotifyChecked" />
                             </HorizontalStackLayout>
-                            <HorizontalStackLayout x:Name="endTimeDisplay">
+                            <HorizontalStackLayout x:Name="endTimeDisplay" IsVisible="false">
                                 <Label Text="Time" />
                                 <Border BackgroundColor="{StaticResource WGUDarkBlue}">
                                     <TimePicker x:Name="endTime" />
