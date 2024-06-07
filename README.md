@@ -15,5 +15,6 @@ Navigate to [Github Releases](https://github.com/jtiemens34/wgu-student-app/rele
 - Navigate to the Assesment tab to add assessments for courses.
 
 <img src="https://raw.githubusercontent.com/jtiemens34/wgu-student-app/working/readme_images/assessments.png" alt="Screenshot depicting the Assessments view" width="500" />
+
 - You can activate the notify checkboxes for assessments to push notifications to your application at the specified time for assessments.
 - You can click/tap any term, course, or assessment to edit its information.
